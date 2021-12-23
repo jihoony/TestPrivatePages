@@ -7,18 +7,18 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Welcome</title>
-    <meta name="title" content="Welcome">
+    <title>KeyTool Import PrivateKey, Certificate</title>
+    <meta name="title" content="KeyTool Import PrivateKey, Certificate">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jihoony.github.io/TestPrivatePages/">
-    <meta property="og:title" content="Welcome">
+    <meta property="og:url" content="https://jihoony.github.io/TestPrivatePages/keytool-import-privatekey-certificate/">
+    <meta property="og:title" content="KeyTool Import PrivateKey, Certificate">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://jihoony.github.io/TestPrivatePages/">
-    <meta property="twitter:title" content="Welcome">
+    <meta property="twitter:url" content="https://jihoony.github.io/TestPrivatePages/keytool-import-privatekey-certificate/">
+    <meta property="twitter:title" content="KeyTool Import PrivateKey, Certificate">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/TestPrivatePages/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -27,6 +27,7 @@
     <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.1.693552322489" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/TestPrivatePages/resources/js/retype.js?v=1.11.1" defer data-turbo-track="reload"></script>
     <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.1.693552322489" defer></script>
+    <script id="prism-js" type="text/javascript" src="/TestPrivatePages/resources/js/prism.js?v=1.11.1.693552322489" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -174,12 +175,207 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="welcome" class="break-words">
+<doc-anchor-target id="keytool-import-privatekey-certificate" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#welcome">#</doc-anchor-trigger>
-        <span>Welcome</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#keytool-import-privatekey-certificate">#</doc-anchor-trigger>
+        <span>KeyTool Import PrivateKey, Certificate</span>
     </h1>
 </doc-anchor-target>
+<doc-anchor-target id="table-of-contents">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#table-of-contents">#</doc-anchor-trigger>
+        <span>Table Of Contents</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="files">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#files">#</doc-anchor-trigger>
+        <span>Files</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="file-list">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#file-list">#</doc-anchor-trigger>
+        <span>file list</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">% ls
+certificate.crt         privateKey_private.pem  publicKey_public.pem</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="show-files">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#show-files">#</doc-anchor-trigger>
+        <span>show files</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">% file certificate.crt 
+certificate.crt: PEM certificate
+
+% cat certificate.crt 
+-----BEGIN CERTIFICATE-----
+MIIBqDCCAU6gAwIBAgIULvhjkKt1BonKn6rsqwt7cV0yUtAwCgYIKoZIzj0EAwIw
+FjEUMBIGA1UEAwwLVEFZTy1ST09ULUUwIBcNMjAwMTAxMDAwMDAwWhgPOTk5OTEy
+MzEyMzU5NTlaMBYxFDASBgNVBAMMC1RBWU8tUk9PVC1FMFkwEwYHKoZIzj0CAQYI
+KoZIzj0DAQcDQgAEqZO7U8FhZ89jPVlKlsDyRedUwtYs8NH+mQBuC7jlOdxbKRoN
+jVaLt8WWyDPTXE374OGZGdgt9roHyQ3MOJeGzqN4MHYwFgYKKwYBBAGCxGkFCQEB
+/wQFMAMCAQEwDgYDVR0PAQH/BAQDAgEGMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgw
+FoAU69xUcCMuwHNGGnTt1AYw5m/cTOYwHQYDVR0OBBYEFOvcVHAjLsBzRhp07dQG
+MOZv3EzmMAoGCCqGSM49BAMCA0gAMEUCIELm69mYqefjQRI1b9L7DcCxo7U1yunP
+Bisb7wGRb/qKAiEA6rk88xnoEh1o6q3sXO/mNmPWLqMLQQJ/02vAZ5JbAu0=
+-----END CERTIFICATE-----                                                                                         
+
+% file privateKey_private.pem 
+privateKey_private.pem: PEM EC private key
+
+% cat privateKey_private.pem 
+-----BEGIN EC PRIVATE KEY-----
+ME0CAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEMzAxAgEBBCDjsACC7YNrNgk5VRAz
+n6OpmqsIljfiePTAAsXcpvKd96AKBggqhkjOPQMBBw==
+-----END EC PRIVATE KEY-----</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="import-certificate">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#import-certificate">#</doc-anchor-trigger>
+        <span>Import Certificate</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="import-cert">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#import-cert">#</doc-anchor-trigger>
+        <span>import cert</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">% keytool -importcert -keystore mykeystore.jks -storepass password -alias certificateAlias -file certificate.crt 
+Owner: CN=TAYO-ROOT-E
+Issuer: CN=TAYO-ROOT-E
+Serial number: 2ef86390ab750689ca9faaecab0b7b715d3252d0
+Valid from: Wed Jan 01 09:00:00 KST 2020 until: Sat Jan 01 08:59:59 KST 10000
+Certificate fingerprints:
+         SHA1: AA:41:D3:3D:C3:BC:17:DC:B2:A0:7A:C8:1B:6B:9C:35:43:A4:8F:00
+         SHA256: 39:4D:58:BD:FB:8C:DB:4B:4A:C4:05:5D:48:A9:8A:14:2F:A4:F2:E8:1C:8F:F0:74:F1:51:AE:5D:05:5C:D2:3E
+Signature algorithm name: SHA256withECDSA
+Subject Public Key Algorithm: 256-bit EC (secp256r1) key
+Version: 3
+
+Extensions: 
+
+#1: ObjectId: 1.3.6.1.4.1.41577.5.9 Criticality=true
+0000: 30 03 02 01 01                                     0....
+
+
+#2: ObjectId: 2.5.29.35 Criticality=false
+AuthorityKeyIdentifier [
+KeyIdentifier [
+0000: EB DC 54 70 23 2E C0 73   46 1A 74 ED D4 06 30 E6  ..Tp#..sF.t...0.
+0010: 6F DC 4C E6                                        o.L.
+]
+]
+
+#3: ObjectId: 2.5.29.19 Criticality=true
+BasicConstraints:[
+  CA:false
+  PathLen: undefined
+]
+
+#4: ObjectId: 2.5.29.15 Criticality=true
+KeyUsage [
+  Key_CertSign
+  Crl_Sign
+]
+
+#5: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: EB DC 54 70 23 2E C0 73   46 1A 74 ED D4 06 30 E6  ..Tp#..sF.t...0.
+0010: 6F DC 4C E6                                        o.L.
+]
+]
+
+Trust this certificate? [no]:  yes
+Certificate was added to keystore
+jihoon_yang@MacBook-Pro certificates % keytool -list -keystore mykeystore.jks 
+Enter keystore password:  
+Keystore type: PKCS12
+Keystore provider: SUN
+
+Your keystore contains 1 entry
+
+certificatealias, 2021. 8. 6., trustedCertEntry, 
+Certificate fingerprint (SHA-256): 39:4D:58:BD:FB:8C:DB:4B:4A:C4:05:5D:48:A9:8A:14:2F:A4:F2:E8:1C:8F:F0:74:F1:51:AE:5D:05:5C:D2:3E</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="show-import-result">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#show-import-result">#</doc-anchor-trigger>
+        <span>show import result</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">% ls             
+certificate.crt         mykeystore.jks          privateKey_private.pem  publicKey_public.pem
+
+% keytool -list -keystore mykeystore.jks 
+Enter keystore password:  
+Keystore type: PKCS12
+Keystore provider: SUN
+
+Your keystore contains 1 entry
+
+certificatealias, 2021. 8. 6., trustedCertEntry, 
+Certificate fingerprint (SHA-256): 39:4D:58:BD:FB:8C:DB:4B:4A:C4:05:5D:48:A9:8A:14:2F:A4:F2:E8:1C:8F:F0:74:F1:51:AE:5D:05:5C:D2:3E</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="import-private-key">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#import-private-key">#</doc-anchor-trigger>
+        <span>Import Private Key</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="convert-private-key">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#convert-private-key">#</doc-anchor-trigger>
+        <span>convert private key</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">% openssl pkcs12 -export -in certificate.crt -inkey privateKey_private.pem -out mykeystore.p12 -name &quot;privatekeyAlias&quot;
+Enter Export Password:
+Verifying - Enter Export Password:
+
+
+% ls
+certificate.crt         mykeystore.jks          mykeystore.p12          privateKey_private.pem  publicKey_public.pem</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="import-private-key-1">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#import-private-key-1">#</doc-anchor-trigger>
+        <span>import private key</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">% keytool -importkeystore -deststorepass password -destkeypass password -destkeystore mykeystore.jks -srckeystore mykeystore.p12 -srcstoretype PKCS12 -srcstorepass password -alias &quot;privatekeyAlias&quot;
+Importing keystore mykeystore.p12 to mykeystore.jks...</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="show-import-result-1">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#show-import-result-1">#</doc-anchor-trigger>
+        <span>show import result</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">% keytool -list -keystore mykeystore.jks 
+Enter keystore password:  
+Keystore type: PKCS12
+Keystore provider: SUN
+
+Your keystore contains 2 entries
+
+certificatealias, 2021. 8. 6., trustedCertEntry, 
+Certificate fingerprint (SHA-256): 39:4D:58:BD:FB:8C:DB:4B:4A:C4:05:5D:48:A9:8A:14:2F:A4:F2:E8:1C:8F:F0:74:F1:51:AE:5D:05:5C:D2:3E
+privatekeyalias, 2021. 8. 6., PrivateKeyEntry, 
+Certificate fingerprint (SHA-256): 39:4D:58:BD:FB:8C:DB:4B:4A:C4:05:5D:48:A9:8A:14:2F:A4:F2:E8:1C:8F:F0:74:F1:51:AE:5D:05:5C:D2:3E</code></pre>
+</doc-codeblock></div>
 
 
 
@@ -191,13 +387,20 @@
             
 <nav class="flex mt-14">
     <div class="w-1/2">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/java-keytool/">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+            <span>
+                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                <span class="block mt-1">Java Keytool 사용법</span>
+            </span>
+        </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/java-keytool/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/crypto-file-format/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">Java Keytool 사용법</span>
+                <span class="block mt-1">PEM 과 CER/DER/CRT/CSR 형식 파일이란?</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -245,6 +448,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Welcome", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "KeyTool Import PrivateKey, Certificate", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>
