@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="turbo-root" content="/TestPrivatePages">
+    <meta name="turbo-cache-control" content="no-cache">
+
+    <!-- Primary Meta Tags -->
+    <title>Container Technology, Docker</title>
+    <meta name="title" content="Container Technology, Docker">
+    <meta name="description" content="초반 컴퓨터 시스템은 원격 데이터 센터를 통하여 이루어 졌다. 기업들은 컴퓨터 하드웨어를 구입하고 유지보수하였으며, 이를 유지 보수하는 것이 비용대비 효율적이지 않았기 때문에 제 3자가 소유하고 운영하는 원격 머신의 컴퓨팅 파워를 공유하는 비즈니스 모델이 등장 했다." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jihoony.github.io/TestPrivatePages/container-technology-docker/">
+    <meta property="og:title" content="Container Technology, Docker">
+    <meta property="og:description" content="초반 컴퓨터 시스템은 원격 데이터 센터를 통하여 이루어 졌다. 기업들은 컴퓨터 하드웨어를 구입하고 유지보수하였으며, 이를 유지 보수하는 것이 비용대비 효율적이지 않았기 때문에 제 3자가 소유하고 운영하는 원격 머신의 컴퓨팅 파워를 공유하는 비즈니스 모델이 등장 했다.">
+    <meta property="og:image" content="https://media.graphcms.com/resize=fit:crop,height:630,width:1200/Pg3AI4OkQw6gA8ckUQ5z">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jihoony.github.io/TestPrivatePages/container-technology-docker/">
+    <meta property="twitter:title" content="Container Technology, Docker">
+    <meta property="twitter:description" content="초반 컴퓨터 시스템은 원격 데이터 센터를 통하여 이루어 졌다. 기업들은 컴퓨터 하드웨어를 구입하고 유지보수하였으며, 이를 유지 보수하는 것이 비용대비 효율적이지 않았기 때문에 제 3자가 소유하고 운영하는 원격 머신의 컴퓨팅 파워를 공유하는 비즈니스 모델이 등장 했다.">
+    <meta property="twitter:image" content="https://media.graphcms.com/resize=fit:crop,height:630,width:1200/Pg3AI4OkQw6gA8ckUQ5z">
+    
+    <script>(function () { var el = document.documentElement, m = localStorage.getItem("/TestPrivatePages/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.1.693552785851" rel="stylesheet" data-turbo-track="reload" />
+
+    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.1.693552785851" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/TestPrivatePages/resources/js/retype.js?v=1.11.1" defer data-turbo-track="reload"></script>
+    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.1.693552785851" defer></script>
+    <script id="prism-js" type="text/javascript" src="/TestPrivatePages/resources/js/prism.js?v=1.11.1.693552785851" defer></script>
+</head>
+    <body>
+        <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+    <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+
+    <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+    <div class="container relative flex items-center justify-between flex-grow pr-6 md:justify-start">
+        <!-- Mobile menu button skeleton -->
+        <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center flex-shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px flex-shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+        <div v-cloak id="docs-sidebar-toggle"></div>
+
+        <!-- Logo -->
+        <div class="flex items-center justify-between h-full py-2 md:w-75">
+            <div class="flex items-center px-2 md:px-6">
+                <a id="docs-site-logo" href="/TestPrivatePages/" class="flex items-center leading-snug text-2xl">
+                    <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Project Name</span>
+                </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+            </div>
+
+            <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+        </div>
+
+        <div class="flex justify-between md:flex-grow">
+            <!-- Top Nav -->
+            <nav class="hidden md:flex">
+    <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+        <li class="md:mr-6">
+            <a class="block py-2 text-sm text-gray-400 whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 md:mb-0" href="https://retype.com/guides/getting-started/">Getting Started</a>
+        </li>
+    </ul>
+</nav>
+
+            <!-- Header Right Skeleton -->
+            <div v-cloak class="flex justify-end flex-grow skeleton">
+
+                <!-- Search input mock -->
+                <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                    <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                    </div>
+
+                    <input class="w-full h-10 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 placeholder-gray-400 dark:placeholder-dark-400"
+                    style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search" />
+                </div>
+
+                <!-- Mobile search button mock -->
+                <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                </div>
+
+                <!-- Dark mode switch placehokder -->
+                <div class="w-10 h-10 lg:ml-2"></div>
+
+                <!-- History button mock -->
+                <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                </div>
+            </div>
+
+            <div v-cloak class="flex items-center justify-end flex-grow">
+                <div id="docs-mobile-search-button"></div>
+                <doc-search-desktop></doc-search-desktop>
+
+                <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                <doc-history></doc-history>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <div class="container relative flex bg-white">
+        <!-- Sidebar Skeleton -->
+<div v-cloak class="fixed flex flex-col flex-shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+
+    <!-- Render this div, if config.showSidebarFilter is `true` -->
+    <div class="flex items-center h-16 px-6">
+        <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter" />
+    </div>
+
+    <div class="pl-6 mb-4 mt-1">
+        <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+        <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+        <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+        <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+        <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+        <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+    </div>
+
+
+    <div class="flex-shrink-0 mt-auto bg-transparent dark:border-dark-650">
+        <a
+    class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by"
+    target="_blank"
+    href="https://retype.com/"
+    rel="noopener"
+>
+    <span class="text-xs whitespace-nowrap">Powered by</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+</a>
+
+    </div>
+</div>
+
+<!-- Sidebar component -->
+<doc-sidebar v-cloak>
+    <template #sidebar-footer>
+        <div
+            class="flex-shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650"
+        >
+
+            <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                <nav>
+                    <ul class="flex flex-wrap justify-center items-center">
+                        <li class="mr-6">
+                            <a class="block py-1 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Getting Started</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+
+            <a
+    class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by"
+    target="_blank"
+    href="https://retype.com/"
+    rel="noopener"
+>
+    <span class="text-xs whitespace-nowrap">Powered by</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+</a>
+
+        </div>
+    </template>
+</doc-sidebar>
+
+
+        <div class="flex-grow min-w-0 dark:bg-dark-850">
+            <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+            <div class="flex">
+    <div class="flex-grow min-w-0 px-6 md:px-16">
+        <main class="relative pt-6 pb-16">
+            <div class="docs-markdown" id="docs-content">
+                <!-- Rendered if sidebar right is enabled -->
+                <div id="docs-sidebar-right-toggle"></div>
+               
+                <!-- Page content  -->
+<doc-anchor-target id="container-technology-docker" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#container-technology-docker">#</doc-anchor-trigger>
+        <span>Container Technology, Docker</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="intro">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#intro">#</doc-anchor-trigger>
+        <span>Intro</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="cloud-devops-container">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#cloud-devops-container">#</doc-anchor-trigger>
+        <span>Cloud, DevOps, Container</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="cloud">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#cloud">#</doc-anchor-trigger>
+        <span>Cloud</span>
+    </h3>
+</doc-anchor-target>
+<p>초반 컴퓨터 시스템은 원격 데이터 센터를 통하여 이루어 졌다. 기업들은 컴퓨터 하드웨어를 구입하고 유지보수하였으며, 이를 유지 보수하는 것이 비용대비 효율적이지 않았기 때문에 제 3자가 소유하고 운영하는 원격 머신의 컴퓨팅 파워를 공유하는 비즈니스 모델이 등장 했다.</p>
+<doc-anchor-target id="devops">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#devops">#</doc-anchor-trigger>
+        <span>DevOps</span>
+    </h3>
+</doc-anchor-target>
+<p>기존 소프트웨어는 개발자는 소프트웨어를 작성하고, 사용환경에서 소프트웨어를 실행하고 관리하는 운영자에게 전달했다. 소프트웨어 개발과 컴퓨터 운영은 중복되는 업무가 없었으며 각자 매우 전문적인 일이었다. 클라우드의 등장으로 분산 시스템의 복잡성 및 시스템 운영 기술은 클라우드 시스템의 설계, 아키텍처, 구현과 분리하기 쉽지 않게 되었다. 더이상 소프트웨어는 기존 인프라 시스템과 밀접한 관계를 가지기 시작하였으며 또한 상호 의존적이게 변질 되었다. 소프트웨어를 작성하는 사람은 소프트웨어가 나머지 시스템과 어떤 관계가 있는지 이해해야 하며 시스템을 운영하는 사람은 소프트웨어의 작동 방식과 실패를 이해해야 한다. DevOps는 이 두 그룹을 하나로 모으기 위한 시도에 있다.</p>
+<doc-anchor-target id="container">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#container">#</doc-anchor-trigger>
+        <span>Container</span>
+    </h3>
+</doc-anchor-target>
+<p>소프트웨어를 배포하려면 소프트웨어 자체뿐만 아니라 의존성이 필요하다. 의존성은 라이브러리, 인퍼트리터, 서브 패키지, 컴파일러, 확장 등을 의미한다. 구성(설정, 세부정보, 라이선스키, 패스워드 등) 또한 필요하다.</p>
+<doc-anchor-target id="container-1">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#container-1">#</doc-anchor-trigger>
+        <span>Container</span>
+    </h2>
+</doc-anchor-target>
+<p><figure class="content-center">
+    <img src="https://media.graphcms.com/resize=fit:crop,height:630,width:1200/Pg3AI4OkQw6gA8ckUQ5z" alt="We sell and rent shipping containers and trailers in the Atlanta Metro |  Container Technology, Inc" />
+    <figcaption class="caption">We sell and rent shipping containers and trailers in the Atlanta Metro |  Container Technology, Inc</figcaption>
+</figure>
+</p>
+<p>1950년대 말콤 맥린이라는 트럭 운전사가 화물을 배에 싣는 새로운 방법을 제안했다. 트럭 트레일러에서 짐을 내리고 다시 배에 싣는 대신 단순하게 트럭의 짐칸을 떼어내 배에 싣는 방법을 생각했다. 트럭 트레일러는 본질적으로 바퀴가 달린 큰 금속 상자다. 상자(컨테이너)를 운반하기 위해 붙어 있는 바퀴와 섀시를 떼어낼 수만 있다면, 상자를 들어올리거나 내리는 작업이 매우 쉬워지고, 반대편 끝에 있는 배나 다른 트럭으로도 바로 옮겨 실을 수도 있다.</p>
+<p>소프트웨어의 컨테이너도 해운 산업의 컨테이너와 같은 개념이다. 일반적이고 널리 보급된 표준 패키징과 배포 형식은 운반 용량을 크게 늘리고, 비용을 절감하며, 규모의 경제를 이루며, 다루기 쉽나. 컨테이너 형식에는 애플리케이션 실행에 필요한 모든 것이 포함되어 있으며 컨테이너 런타임이 실행할 수 있는 이미지 파일에 저장한다.</p>
+<doc-anchor-target id="virtual-machine-vs-container">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#virtual-machine-vs-container">#</doc-anchor-trigger>
+        <span>Virtual Machine vs Container</span>
+    </h3>
+</doc-anchor-target>
+<p><figure class="content-center">
+    <img src="https://subicura.com/assets/article_images/2017-01-19-docker-guide-for-beginners-1/vm-vs-docker.png" alt="가상머신과 도커" />
+    <figcaption class="caption">가상머신과 도커</figcaption>
+</figure>
+</p>
+<p>가상 머신 이미지도 애플리케이션 실행에 필요한 모든것을 포함한다. 하지만 그 외에도 불필요한 많은 것을 포함한다. 일반적인 가상머신 이미지는 약 1GiB다. 반면 잘 설계된 컨테이너 이미지는 수백 배 더 작다.</p>
+<p>가상 머신에는 관련 없는 프로그램, 라이브러리, 애플리케이션이 사용하지 않는 많은 것이 포함되어 있어서 공간 대부분이 낭비된다. 네트워크를 통한 VM 이미지 전송은 최적화된 컨테이너보다 훨씬 느리다.</p>
+<p>가상 머신이 실행하는 CPU는 물리 CPU를 실제와 같이 에뮬레이션 하여 구현한다. 이 때문에 가상화 레이어는 성능에 극적이고 부정적인 영향을 미친다. 컨테이너는 일반 바이너리 실행 파일과 마찬가지로 가상화 오버헤드 없이 실제 CPU에서 직접 실행된다. 컨테이너는 필요한 파일만 보유하므로 VM 이미지보다 훨씩 작다. 또한 컨테이너 간에 공유하고 재 사용할 수 있는 주소 지정 방식의 파일 시스템 레이어를 사용한다.</p>
+<doc-anchor-target id="container-orchestration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#container-orchestration">#</doc-anchor-trigger>
+        <span>Container Orchestration</span>
+    </h3>
+</doc-anchor-target>
+<p>운영팀은 컨테이너로 워크로드를 크게 단순화 할 수 있다. 다양한 종류의 시스템, 아키텍처, 운영 체제를 관리하는 대신에 컨테이너 오케스트레이터만 실행하면 된다. 컨테이너 오케스트레이터는 다양한 머신을 하나의 클러스터로 결합하도록 설계된 소프트웨어의 한 종류다. 컨테이너 오케스트레이터라는 용어는 일반적으로 스케줄링, 오케스트레이션, 클러스터 관리를 담당하는 단일 서비스를 말한다.</p>
+<ul>
+<li>스케줄링: 사용 가능한 리소스를 관리하고 가장 효율적으로 실행할 수 있는 워크로드를 할당하는 것</li>
+<li>오케스트레이션: 서비스의 공통적인 목표를 위해 서로 다른 역할을 조정하고 나열 하는 것</li>
+<li>클러스터 관리: 여러 개의 물리 또는 가상 서버를 신뢰할 수 있고 fault-tolerant(장애 허용)를 유지하는 원활한 그룹으로 통합하는 것</li>
+</ul>
+<doc-anchor-target id="docker">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#docker">#</doc-anchor-trigger>
+        <span>Docker</span>
+    </h1>
+</doc-anchor-target>
+<p>Docker는 2013년 3월 산타클라라에서 열린 Pycon Conference에서 dotCloud의 창업자인 Solomon Hykes가 <a href="https://www.youtube.com/watch?v=wW9CAH9nSLs">The future of Linux Containers</a> 라는 세션을 통하여 처음 세상에 알려졌다. 이후 dotCloud에서 Docker Inc.로 회사명을 변경하였다.</p>
+<doc-anchor-target id="docker-architecture">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#docker-architecture">#</doc-anchor-trigger>
+        <span>Docker Architecture</span>
+    </h2>
+</doc-anchor-target>
+<p>Dockers uses a client-server architecture.</p>
+<p><figure class="content-center">
+    <img src="https://docs.docker.com/engine/images/architecture.svg" alt="Docker Architecture Diagram" />
+    <figcaption class="caption">Docker Architecture Diagram</figcaption>
+</figure>
+</p>
+<doc-anchor-target id="container-container-image">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#container-container-image">#</doc-anchor-trigger>
+        <span>Container, Container Image</span>
+    </h2>
+</doc-anchor-target>
+<p><figure class="content-center">
+    <img src="https://subicura.com/assets/article_images/2017-01-19-docker-guide-for-beginners-1/docker-image.png" alt="Docker image" />
+    <figcaption class="caption">Docker image</figcaption>
+</figure>
+</p>
+<p>이미지는 컨테이너 실행에 필요한 파일과 설정 값등을 포함하고 있는것으로 상태값을 가지지 않고 변하지 않는다.</p>
+<p>컨테이너는 이미지를 실행한 상태라고 볼수 있고 추가되거나 변하는 값은 컨테이너에 저장된다.</p>
+<p>같은 이미지에서 여러개의 컨테이너를 생성 할 수 있고 컨테이너의 상태가 바뀌거나 컨테이너가 삭제되더라도 이미지는 변하지 않고 그대로 남아있다.</p>
+<doc-anchor-target id="container-and-image">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#container-and-image">#</doc-anchor-trigger>
+        <span>Container and Image</span>
+    </h3>
+</doc-anchor-target>
+<p>Container Image와 Container는 Class와 Class Instance의 관계와 같다.</p>
+<p>Java프로그램의 경우 Class를 작성하기 위해 java 파일로 파일을 생성하듯 Container도 Dockerfile 파일을 작성하여 Container Image를 생성한다.</p>
+<p>java 파일로 작성된 Class는 인스턴스로 생성되는 과정에 속성 값 등을 가지고 인스턴스 이름을 통하여 각 인스턴스를 구분 하듯이 Container Image도 각종 속성, 환경 변수 등을 가지며 컨테이너 이름을 통하여 구분한다.</p>
+<doc-anchor-target id="docker-image">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#docker-image">#</doc-anchor-trigger>
+        <span>Docker Image</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="layer-저장방식">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#layer-저장방식">#</doc-anchor-trigger>
+        <span>Layer 저장방식</span>
+    </h4>
+</doc-anchor-target>
+<p><figure class="content-center">
+    <img src="https://subicura.com/assets/article_images/2017-01-19-docker-guide-for-beginners-1/image-layer.png" alt="Docker Layer" />
+    <figcaption class="caption">Docker Layer</figcaption>
+</figure>
+</p>
+<p><figure class="content-center">
+    <img src="https://docs.docker.com/storage/storagedriver/images/container-layers.jpg" alt="Layers of a container based on the Ubuntu image" />
+    <figcaption class="caption">Layers of a container based on the Ubuntu image</figcaption>
+</figure>
+</p>
+<p><figure class="content-center">
+    <img src="https://docs.docker.com/storage/storagedriver/images/sharing-layers.jpg" alt="Containers sharing same image" />
+    <figcaption class="caption">Containers sharing same image</figcaption>
+</figure>
+</p>
+<p>Docker Image and layers: <a href="https://docs.docker.com/storage/storagedriver/">https://docs.docker.com/storage/storagedriver/</a></p>
+<doc-anchor-target id="image-경로">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#image-경로">#</doc-anchor-trigger>
+        <span>Image 경로</span>
+    </h4>
+</doc-anchor-target>
+<p><figure class="content-center">
+    <img src="https://subicura.com/assets/article_images/2017-01-19-docker-guide-for-beginners-1/image-url.png" alt="Docker image url" />
+    <figcaption class="caption">Docker image url</figcaption>
+</figure>
+</p>
+<doc-anchor-target id="docker-how-to">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#docker-how-to">#</doc-anchor-trigger>
+        <span>Docker How to</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="docker-container-만들기">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#docker-container-만들기">#</doc-anchor-trigger>
+        <span>Docker Container 만들기</span>
+    </h3>
+</doc-anchor-target>
+<p>Docker Container를 만들기 위한 명령어 구문을 통하여 Docker Container를 만들수 있다. 아래는 주요 구문을 정리하였다. Dockerfile은 Top-Down 으로 해석된다.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Syntax</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#</td>
+<td>comment</td>
+</tr>
+<tr>
+<td>FROM</td>
+<td>컨테이너의 base image (운영환경)</td>
+</tr>
+<tr>
+<td>MAINTAINER</td>
+<td>이미지를 생선한 사람의 이름 및 정보</td>
+</tr>
+<tr>
+<td>LABEL</td>
+<td>컨테이너 이미지에 컨테이너의 정보를 저장</td>
+</tr>
+<tr>
+<td>RUN</td>
+<td>컨테이너 빌드를 위해 base image에서 실행할 명령어</td>
+</tr>
+<tr>
+<td>COPY</td>
+<td>컨테이너 빌드시 호스트의 파일을 컨테이너로 복사</td>
+</tr>
+<tr>
+<td>ADD</td>
+<td>컨테이너 빌드시 호스트의 파일(tar, url 포함)을 컨테이너로 복사. (압축파일의 경우 자동으로 압축 해제됨)</td>
+</tr>
+<tr>
+<td>WORKDIR</td>
+<td>컨테이너 빌드시 명령이 실행된 작업 디렉터리 설정</td>
+</tr>
+<tr>
+<td>ENV</td>
+<td>환경 변수 지정</td>
+</tr>
+<tr>
+<td>USER</td>
+<td>명령 및 컨테이너 실행시 적용할 유저 설정</td>
+</tr>
+<tr>
+<td>VOLUME</td>
+<td>파일 또는 디렉토리를 컨테이너의 디렉토리로 마운트</td>
+</tr>
+<tr>
+<td>EXPOSE</td>
+<td>컨테이너 동작 시 외부에서 사용할 포트 지정</td>
+</tr>
+<tr>
+<td>CMD</td>
+<td>컨테이너 동작 시 자동으로 실행할 서비스나 스크립트 지정</td>
+</tr>
+<tr>
+<td>ENTRYPOINT</td>
+<td>CMD와 함께 사용하면서 command 지정 시 사용</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Dockerfile example</strong></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-docker"><code v-pre class="language-docker"># Dockerfile
+FROM node:12
+COPY app.js /
+CMD [&quot;node&quot;, &quot;/app.js&quot;]</code></pre>
+</doc-codeblock></div>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-javascript"><code v-pre class="language-javascript">// app.js
+const http = require(&quot;http&quot;);
+const hostname = &quot;127.0.0.1&quot;;
+const port = 3000;
+
+const server = http.createServer((req,res) =&gt;{
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'test/plain');
+  res.send('Hello World');
+});
+
+server.listen(port, hostname, ()=&gt;{
+  console.log(&quot;Server running at http://${hostname}:${port}/&quot;);
+});</code></pre>
+</doc-codeblock></div>
+<p><strong>Docker build example</strong></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># -t 옵션은 빌드할 이미지 이름을 지정함. tag를 생략시 tag는 자동으로 latest로 기입됨
+# .은 현재 디렉토리의 Dockerfile을 기준으로 이미지를 빌드하도록 함
+$ docker build -t imagename:tag .
+
+$ docker build -t node_app .</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="docker-run-example">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#docker-run-example">#</doc-anchor-trigger>
+        <span>Docker Run Example</span>
+    </h3>
+</doc-anchor-target>
+<p>Search Image</p>
+
+
+
+
+                <!-- Required only on API pages -->
+                <doc-toolbar-member-filter-no-results />
+            </div>
+
+            
+<nav class="flex mt-14">
+    <div class="w-1/2">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+            <span>
+                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                <span class="block mt-1">Welcome</span>
+            </span>
+        </a>
+    </div>
+
+    <div class="w-1/2">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/java-keytool/">
+            <span>
+                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                <span class="block mt-1">Java Keytool 사용법</span>
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+        </a>
+    </div>
+</nav>
+
+
+        </main>
+
+        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+            <footer class="flex flex-wrap items-center justify-between">
+    <div>
+        <ul class="flex flex-wrap items-center text-sm">
+</ul>
+
+    </div>
+    <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2021. All rights reserved.</p>
+</div>
+</footer>
+
+        </div>
+    </div>
+    
+    <!-- Rendered if sidebar right is enabled -->
+    <!-- Sidebar right skeleton-->
+    <div v-cloak class="fixed top-0 bottom-0 right-0 transform translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:flex-shrink-0 lg:pt-6 lg:transform-none lg:w-56 lg:z-0 md:w-72 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+        <div class="pl-5">
+            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+        </div>
+    </div>
+    
+    <!-- User should be able to hide sidebar right -->
+    <doc-sidebar-right v-cloak></doc-sidebar-right>
+</div>
+
+        </div>
+    </div>
+
+    <doc-search-mobile></doc-search-mobile>
+    <doc-back-to-top></doc-back-to-top>
+</div>
+
+
+        <div id="docs-overlay-target"></div>
+
+        <script>window.__DOCS__ = { "title": "Container Technology, Docker", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+    </body>
+</html>
