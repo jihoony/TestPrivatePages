@@ -1,7 +1,5 @@
 # PEM 과 CER/DER/CRT/CSR 형식 파일이란?
 
-[toc]
-
 PKI 나 전자서명 업무를 위해서 공인/공동 인증서(Digital Certificate)와 개인키(Private key)를 다뤄 보신 분은 PEM 이나 DER, CER 이란 단어와 이런 확장자를 갖는 파일을 보았을 겁니다.
 
 각 단어와 확장자에 대한 명확한 설명이 없어서 많은 분들이 혼란스러워해서 정리해 봅니다.
