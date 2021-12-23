@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="turbo-root" content="/TestPrivatePages">
+    <meta name="turbo-cache-control" content="no-cache">
+
+    <!-- Primary Meta Tags -->
+    <title>Java Keytool 사용법</title>
+    <meta name="title" content="Java Keytool 사용법">
+    <meta name="description" content="[ toc]" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jihoony.github.io/TestPrivatePages/java-keytool/">
+    <meta property="og:title" content="Java Keytool 사용법">
+    <meta property="og:description" content="[ toc]">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jihoony.github.io/TestPrivatePages/java-keytool/">
+    <meta property="twitter:title" content="Java Keytool 사용법">
+    <meta property="twitter:description" content="[ toc]">
+    
+    <script>(function () { var el = document.documentElement, m = localStorage.getItem("/TestPrivatePages/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.1.693552142303" rel="stylesheet" data-turbo-track="reload" />
+
+    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.1.693552142303" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/TestPrivatePages/resources/js/retype.js?v=1.11.1" defer data-turbo-track="reload"></script>
+    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.1.693552142303" defer></script>
+    <script id="prism-js" type="text/javascript" src="/TestPrivatePages/resources/js/prism.js?v=1.11.1.693552142303" defer></script>
+</head>
+    <body>
+        <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+    <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+
+    <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+    <div class="container relative flex items-center justify-between flex-grow pr-6 md:justify-start">
+        <!-- Mobile menu button skeleton -->
+        <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center flex-shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px flex-shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+        <div v-cloak id="docs-sidebar-toggle"></div>
+
+        <!-- Logo -->
+        <div class="flex items-center justify-between h-full py-2 md:w-75">
+            <div class="flex items-center px-2 md:px-6">
+                <a id="docs-site-logo" href="/TestPrivatePages/" class="flex items-center leading-snug text-2xl">
+                    <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Project Name</span>
+                </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+            </div>
+
+            <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+        </div>
+
+        <div class="flex justify-between md:flex-grow">
+            <!-- Top Nav -->
+            <nav class="hidden md:flex">
+    <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+        <li class="md:mr-6">
+            <a class="block py-2 text-sm text-gray-400 whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 md:mb-0" href="https://retype.com/guides/getting-started/">Getting Started</a>
+        </li>
+    </ul>
+</nav>
+
+            <!-- Header Right Skeleton -->
+            <div v-cloak class="flex justify-end flex-grow skeleton">
+
+                <!-- Search input mock -->
+                <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                    <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                    </div>
+
+                    <input class="w-full h-10 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 placeholder-gray-400 dark:placeholder-dark-400"
+                    style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search" />
+                </div>
+
+                <!-- Mobile search button mock -->
+                <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                </div>
+
+                <!-- Dark mode switch placehokder -->
+                <div class="w-10 h-10 lg:ml-2"></div>
+
+                <!-- History button mock -->
+                <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                </div>
+            </div>
+
+            <div v-cloak class="flex items-center justify-end flex-grow">
+                <div id="docs-mobile-search-button"></div>
+                <doc-search-desktop></doc-search-desktop>
+
+                <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                <doc-history></doc-history>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <div class="container relative flex bg-white">
+        <!-- Sidebar Skeleton -->
+<div v-cloak class="fixed flex flex-col flex-shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+
+    <!-- Render this div, if config.showSidebarFilter is `true` -->
+    <div class="flex items-center h-16 px-6">
+        <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter" />
+    </div>
+
+    <div class="pl-6 mb-4 mt-1">
+        <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+        <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+        <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+        <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+        <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+        <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+    </div>
+
+
+    <div class="flex-shrink-0 mt-auto bg-transparent dark:border-dark-650">
+        <a
+    class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by"
+    target="_blank"
+    href="https://retype.com/"
+    rel="noopener"
+>
+    <span class="text-xs whitespace-nowrap">Powered by</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+</a>
+
+    </div>
+</div>
+
+<!-- Sidebar component -->
+<doc-sidebar v-cloak>
+    <template #sidebar-footer>
+        <div
+            class="flex-shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650"
+        >
+
+            <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                <nav>
+                    <ul class="flex flex-wrap justify-center items-center">
+                        <li class="mr-6">
+                            <a class="block py-1 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Getting Started</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+
+            <a
+    class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by"
+    target="_blank"
+    href="https://retype.com/"
+    rel="noopener"
+>
+    <span class="text-xs whitespace-nowrap">Powered by</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+</a>
+
+        </div>
+    </template>
+</doc-sidebar>
+
+
+        <div class="flex-grow min-w-0 dark:bg-dark-850">
+            <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+            <div class="flex">
+    <div class="flex-grow min-w-0 px-6 md:px-16">
+        <main class="relative pt-6 pb-16">
+            <div class="docs-markdown" id="docs-content">
+                <!-- Rendered if sidebar right is enabled -->
+                <div id="docs-sidebar-right-toggle"></div>
+               
+                <!-- Page content  -->
+<doc-anchor-target id="java-keytool-사용법" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#java-keytool-사용법">#</doc-anchor-trigger>
+        <span>Java Keytool 사용법</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="index">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#index">#</doc-anchor-trigger>
+        <span>Index</span>
+    </h1>
+</doc-anchor-target>
+<p>[toc]</p>
+<doc-anchor-target id="개요">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#개요">#</doc-anchor-trigger>
+        <span>개요</span>
+    </h1>
+</doc-anchor-target>
+<p>Java 는 KetStore라는 인터페이스를 통해 Encryption/Decryption 및 Digital Signature에 사용되는 Private Key, Public Key 와 Certificate를 추상화하여 제공하고 있다.</p>
+<p>KeyStore를 구현한 Provider에 따라 실제 개인키가 저장되는 곳이 로컬 디스크이든 HSM 같은 별도의 하드웨어이든 아니면 Windows의 CertStore나 OSX의 KeyChain 이든 상관없이 사용자는 소스 코드 수정없이 키와 인증서를 가져올 수 있고 이를 이용하여 데이타 암복호화, 전자서명을 수행할 수 있다.</p>
+<p>keytool은 Keystore 기반으로 인증서와 키를 관리할 수 있는 커맨드 방식의 유틸리티로 JDK에 포함되어 있다. 커맨드 방식의 openssl과 비슷한 용도로 사용할 수 있는 프로그램이라 보면 될 것 같다.</p>
+<doc-anchor-target id="용법">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#용법">#</doc-anchor-trigger>
+        <span>용법</span>
+    </h1>
+</doc-anchor-target>
+<p>옵션 없이 keytool을 실행하면 다음과 같이 메인 command를 표시한다.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ keytool
+Key and Certificate Management Tool
+
+Commands:
+
+ -certreq            Generates a certificate request
+ -changealias        Changes an entry's alias
+ -delete             Deletes an entry
+ -exportcert         Exports certificate
+ -genkeypair         Generates a key pair
+ -genseckey          Generates a secret key
+ -gencert            Generates certificate from a certificate request
+ -importcert         Imports a certificate or a certificate chain
+ -importpass         Imports a password
+ -importkeystore     Imports one or all entries from another keystore
+ -keypasswd          Changes the key password of an entry
+ -list               Lists entries in a keystore
+ -printcert          Prints the content of a certificate
+ -printcertreq       Prints the content of a certificate request
+ -printcrl           Prints the content of a CRL file
+ -storepasswd        Changes the store password of a keystore
+
+Use &quot;keytool -command_name -help&quot; for usage of command_name </code></pre>
+</doc-codeblock></div>
+<p>커맨드마다 하위 옵션이 있으며 커맨드의 상세 설명을 보려면 -help 옵션을 커맨드 뒤에 추가하면 된다.</p>
+<p>다음은 공개키와 개인키 두 개의 키쌍을 생성하는 -genkeypair 명령의 옵션을 표시하는 예제이다.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ keytool -genkeypair -help
+keytool -genkeypair [OPTION]...
+
+Generates a key pair
+
+Options:
+
+ -alias &lt;alias&gt;                  alias name of the entry to process
+ -keyalg &lt;keyalg&gt;                key algorithm name
+ -keysize &lt;keysize&gt;              key bit size
+ -sigalg &lt;sigalg&gt;                signature algorithm name
+ -destalias &lt;destalias&gt;          destination alias
+ -dname &lt;dname&gt;                  distinguished name
+ -startdate &lt;startdate&gt;          certificate validity start date/time
+ -ext &lt;value&gt;                    X.509 extension
+ -validity &lt;valDays&gt;             validity number of days
+ -keypass &lt;arg&gt;                  key password
+ -keystore &lt;keystore&gt;            keystore name
+ -storepass &lt;arg&gt;                keystore password
+ -storetype &lt;storetype&gt;          keystore type
+ -providername &lt;providername&gt;    provider name
+ -providerclass &lt;providerclass&gt;  provider class name
+ -providerarg &lt;arg&gt;              provider argument
+ -providerpath &lt;pathlist&gt;        provider classpath
+ -v                              verbose output
+ -protected                      password through protected mechanism
+
+Use &quot;keytool -help&quot; for all available commands</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="keystore-type">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#keystore-type">#</doc-anchor-trigger>
+        <span>KeyStore Type</span>
+    </h1>
+</doc-anchor-target>
+<p>keytool을 사용할 경우 명시적으로 <em>-keystore</em> 옵션으로 키스토어 파일의 경로를 지적하지 않으면 기본적으로 사용자의 홈디렉토리에서 .keystore 파일을 찾게 된다.</p>
+<p>keystore는 여러 가지 타입을 지원하는데 기본적으로는 JKS(Java KeyStore) 라는 타입으로 처리된다.</p>
+<p>다음은 <em>jks_keystore</em>라는 파일 이름으로 JKS 방식의 키스토어를 생성하는 명령어로 JKS는 기본 옵션이므로 <em>-storetype jks</em>은 생략 가능하다</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ keytool -genkeypair -keystore jks_keystore -storetype jks</code></pre>
+</doc-codeblock></div>
+<p>인증서와 개인키를 저장하는 또 다른 표준인 PKCS12 타입을 사용할 경우 다음과 같이 <em>-storetype</em> 옵션을 추가하면 된다.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ keytool -genkeypair -keystore pkcs12_keystore -storetype pkcs12</code></pre>
+</doc-codeblock></div>
+<p>Windows와 Mac OSX는 OS에 개인키와 인증서를 저장하는 공간이 따로 있는데 keytool로 접근이 가능하다. <strong>Windows-MY</strong>는 사용자의 인증서와 개인키를 저장하는 공간이며 <strong>Windows-ROOT</strong>는 신뢰하는 루트 인증서를 저장하는 공간이다. OSX의 키체인(KeyChain) 에 접근시 <strong>KeychainStore</strong>를 타입으로 지정하면 된다. 그외 <strong>Bouncy Castle</strong>를 <strong>JCE Provider</strong>로 사용할 경우 <strong>BKS</strong> 타입을 사용할 수 있다.</p>
+<doc-anchor-target id="keypair-내-object-출력">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#keypair-내-object-출력">#</doc-anchor-trigger>
+        <span>KeyPair 내 Object 출력</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="인증서-목록-출력">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#인증서-목록-출력">#</doc-anchor-trigger>
+        <span>인증서 목록 출력</span>
+    </h2>
+</doc-anchor-target>
+<p>다음 명령으로 KeyStore 내 인증서 목록을 출력할 수 있다.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ keytool -list -keystore my-keystore.jks</code></pre>
+</doc-codeblock></div>
+<p>JRE에 포함되어 있는 기본 인증기관(ca) 인증서 파일은 jre/lib/security/cacerts/cacerts 파일에 존재한다. 다음 명령은 기본 ca 목록을 출력한다.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ keytool -list -keystore $JAVA_HOME/jre/lib/security/cacerts</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="인증서-import">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#인증서-import">#</doc-anchor-trigger>
+        <span>인증서 Import</span>
+    </h1>
+</doc-anchor-target>
+<p><em>-importcert</em> 명령어로 인증서를 임포트 할 수 있다. 만약 인증기관 인증서라면 <em>-trustcacerts</em> 옵션을 추가한다.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ keytool -importcert -keystore my-keystore.jks -storepass changeit -trustcacerts -alias rootca -file &quot;rootca.der&quot;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="private-key-import">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#private-key-import">#</doc-anchor-trigger>
+        <span>Private Key import</span>
+    </h1>
+</doc-anchor-target>
+<p>keytool은 외부에서 생성된 private key 를 keystore 에 import 하는 방법을 제공하지 않는다. 한 가지 방법은 JKD 6 이상부터 PKCS#12으로 된 인증서와 개인키를 keystore 에 import 하는게 가능하므로 openssl로 pkcs#12를 만들고 pics#12를 KeyStore로 임포트하면 된다.</p>
+<ol>
+<li><p>이미 외부에서 개인키(mycert.key)와 인증서(mycert.crt)는 생성 되었다고 가정한다.</p>
+</li>
+<li><p>인증서와 개인키가 DER 방식으로 encoding 되어있으면 openssl에서 pkcs12로 변환하지 못하니 PEM 형식으로 변환해야 한다. 에디터로 열어서 다음과 같이 텍스트로 표시되면 PEM 이고 바이너리면 DER 이므로 변환해야 한다.</p>
+<p>&lt; 인증서 예시 &gt;</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">pem</div>
+<pre class="language-none"><code v-pre class="language-none">-----BEGIN CERTIFICATE-----
+MIIFeDCCBGCgAwIBAgIBGTANBgkqhkiG9w0BAQsFADBpMQswCQYDVQQGEwJLUjEN
+MAsGA1UECgwES0lTQTEuMCwGA1UECwwlS29yZWEgQ2VydGlmaWNhdGlvbiBBdXRo
+b3JpdHkgQ2VudHJhbDEbMBkGA1UEAwwSS2lzYSBUZXN0IFJvb3RDQSA1MB4XDTEx</code></pre>
+</doc-codeblock></div>
+<p>&lt; 개인키 예시 &gt;</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">PEM</div>
+<pre class="language-none"><code v-pre class="language-none">-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEA6KLO6jGTx1NMZsN3QJh/YCrVgmZsHlaD8sSFIFUcc5wH0gy6
+oKggrOD7gE9CPRb3MQG53hx29c92ih/cFKrN1IoeSPj0ftxZPhKUczfot2CAH3GX
+BWh0OYeuCIv088aKhSMJJLP9ZruC6Zhb01HYJiWdpOMX53fSMRJZYgjlIHZMi76u
+ofLnvuP2Ry8VJntw2RFJeei0Z+6+YpHJlQbuzIrUjzNe6aCZMerbCtMoO7GnNN0y
+lYl2P+D9aDhypB4bH2tGQ4mYSSdCXslO46C9zeesStZkSanXbZCvP4dYmr2o7STe</code></pre>
+</doc-codeblock></div>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">## 인증서를 PEM 으로 변환
+$ openssl x509 -inform der -in mycert.der -out mycert.crt
+## 개인키 변환
+$ openssl rsa -inform der -in mycert.key.der -out mycert.key</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>openssl로 PKCS12 생성</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ openssl pkcs12 -export in mycert.crt -inkey mycert.key -out mykeystore.p12 -name &quot;some alias&quot;</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>Enter Export Password: 에 pkcs12 암호 입력(예: qwert123)</p>
+</li>
+<li><p>keytool로 PKCS12를 KeyStore로 변환</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ keytool -importkeystore -deststorepass changeit -destkeypass changit -destkeystore my-keystore.jks -srckeystore mykeystore.p12 -srcstoretype PKCS12 -srcstorepass qwert123 -alias &quot;some alias&quot;</code></pre>
+</doc-codeblock></div>
+</li>
+</ol>
+<doc-anchor-target id="alias-변경">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#alias-변경">#</doc-anchor-trigger>
+        <span>alias 변경</span>
+    </h1>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ keytool -changealias -keystore MY_KEYSTORE_2.jks -alias OLD_ALIAS -destalias NEW_ALIAS</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="암호-변경">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#암호-변경">#</doc-anchor-trigger>
+        <span>암호 변경</span>
+    </h1>
+</doc-anchor-target>
+<p>Key Store에 저장된 개인키를 보호하기 위해 key store 자체에 대해서 암호를 걸 수 있고 특정 alias에 저장된 개인키에도 암호를 걸 수 있다.</p>
+<doc-anchor-target id="keystore-암호-변경">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#keystore-암호-변경">#</doc-anchor-trigger>
+        <span>Keystore 암호 변경</span>
+    </h2>
+</doc-anchor-target>
+<p>Jus_keystore 라는 키스토어 파일의 암호를 변경한다.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ keytool -storepasswd -keystore jks_keystore
+
+Enter keystore password:
+New keystore password:
+Re-enter new keystore password:</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="key-암호-변경">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#key-암호-변경">#</doc-anchor-trigger>
+        <span>Key 암호 변경</span>
+    </h2>
+</doc-anchor-target>
+<p>jks_keystore 라는 키스토어 파일내의 mykey 라는 alias 를 가진 개인키의 암호를 변경한다.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ keytool -keypasswd -alias mykey -keystore jks_keystore
+
+Enter keystore password:
+Enter key password for &lt;mykey&gt;
+New key password for &lt;mykey&gt;:
+Re-enter new key password for &lt;mykey&gt;:</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="ref">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ref">#</doc-anchor-trigger>
+        <span>Ref</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="keystore-entries">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#keystore-entries">#</doc-anchor-trigger>
+        <span>KeyStore Entries</span>
+    </h2>
+</doc-anchor-target>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PrivateKey</td>
+<td>This is a type of keys which are used in asymmetric cryptography. It is usually protected with password because of its sensitivity. It can also be used to sign a digital signature.</td>
+</tr>
+<tr>
+<td>Certificate</td>
+<td>A certificate contains a public key which can identify the subject claimed in the certificate. It is usually used to verify the identity of a server. Sometimes it is also used to identify a client when requested.</td>
+</tr>
+<tr>
+<td>SecretKey</td>
+<td>A key entry which is sued in symmetric cryptography.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="keystore-type-1">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#keystore-type-1">#</doc-anchor-trigger>
+        <span>KeyStore Type</span>
+    </h2>
+</doc-anchor-target>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JKS</td>
+<td>Java Key Store. You can find this file at sun.security.provider.JavaKeyStore. This keystore is Java specific, it usually has an extension of jks. This type of keystore can contain private keys and certificates, but it cannot be used to store secret keys. Sing it&#x27;s a Java specific keystore, so it cannot be used in other programming languages. The private keys stored in JKS cannot be extracted in Java.</td>
+</tr>
+<tr>
+<td>JCEKS</td>
+<td>JCE key store(Java Cryptography Extension KeyStore). It is a super set of JKS with more algorithms supported. It is an enhanced standard added later by Sun. You can find this file at com.sun.crypto.provider.JceKeyStore. This keystore has an extension of jceks. The entries which can be put in the JCEKS keystore are private keys, secret keys and certificates. This keystore provides much stronger protection for stored private keys by using Triple DES encryption.<br />The provider of JCEKS is SunJCE, it was introduced in Java 1.4. Hence prior to Java 1.4, only JKS can be used.</td>
+</tr>
+<tr>
+<td>PCKS12</td>
+<td>this is a standard keystore type which can be used in Java and other languages. You can find this keystore implementation at sun.security.pkcs12.PKCS12KeyStore. It usually has an extension of p12 or pfx. You can store private keys, secret keys and certificates on this type. Unlike JKS, the private keys on PKCS12 keystore can be extracted in Java. This type is portable and can be operated with other libraries written in other languages such as C, C++ or C#.<br />Currently the default keystore type in Java is JKS, i.e the keystore format will be JKS if you don&#x27;t specify the -storetype while creating keystore with keytool. However, <a href="http://openjdk.java.net/jeps/229">the default keystore type will be changed to PKCS12 in Java 9</a> because its enhanced compatibility compared to JKS. You can check the default keystore type at <strong>$JRE/lib/security/java.security</strong> file:</td>
+</tr>
+<tr>
+<td>PKCS11</td>
+<td>this is a hardware keystore type. It provides an interface for the Java library to connect with hardware keystore devices such as SafeNet&#x27;s Luna, nCipher or Smart cards. You can find this implementation at sun.security.pkcs11.P11KeyStore. When you load the keystore, you no need to create a specific provider with specific configuration. This keystore can store private keys, secret keys and certificates. When loading the keystore, the entries will be retrieved from the keystore and then converted into software entries.</td>
+</tr>
+<tr>
+<td>DKS</td>
+<td>Domain KeyStore is a keystore of keystore. It abstracts a collection of keystores that are presented as a single logical keystore. Itself is actually not a keystore. This new keystore type is introduced in <a href="http://docs.oracle.com/javase/8/docs/technotes/guides/security/enhancements-8.html">Java 8</a>. There is a new class <a href="http://docs.oracle.com/javase/8/docs/api/java/security/DomainLoadStoreParameter.html">DomainLoadStoreParameter</a> which closely relates to DKS.<br />This keystore is located at <strong>sun.security.provider.DomainKeyStore.java</strong>.</td>
+</tr>
+<tr>
+<td>Windows-MY</td>
+<td>this is a type of keystore on Windows which is managed by the Windows operating system. It stores the user private keys and certificates which can be used to perform cryptographic operations such as signature verification, data encryption etc. Since it&#x27;s a kind of native keystore, Java doesn&#x27;t have a general API to access it. Oracle provides a separate API to access the Windows-MY keystore -- SunMSCAPI. The provider class for this API is <strong>sun.security.mscapi.SunMSCAPI</strong>.</td>
+</tr>
+<tr>
+<td>BKS</td>
+<td>BoucyCastle keystore, is a keystore format provided the popular third party Java cryptographic library provider -- <a href="https://bouncycastle.org/specifications.html">BouncyCastle</a>. It is a keystore similar to the <a href="https://www.pixelstech.net/article/1409966488-Different-types-of-keystore-in-Java----JKS">JKS</a> provided by Oracle JDK. But it supports storing secret key, private key and certificate. It is frequently used in mobile application developments.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="links">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#links">#</doc-anchor-trigger>
+        <span>Links</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li><a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyStore">https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyStore</a></li>
+<li><a href="https://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html">https://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html</a></li>
+</ul>
+
+
+
+
+                <!-- Required only on API pages -->
+                <doc-toolbar-member-filter-no-results />
+            </div>
+
+            
+<nav class="flex mt-14">
+    <div class="w-1/2">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+            <span>
+                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                <span class="block mt-1">Welcome</span>
+            </span>
+        </a>
+    </div>
+
+    <div class="w-1/2">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/crypto-file-format/">
+            <span>
+                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                <span class="block mt-1">PEM 과 CER/DER/CRT/CSR 형식 파일이란?</span>
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+        </a>
+    </div>
+</nav>
+
+
+        </main>
+
+        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+            <footer class="flex flex-wrap items-center justify-between">
+    <div>
+        <ul class="flex flex-wrap items-center text-sm">
+</ul>
+
+    </div>
+    <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2021. All rights reserved.</p>
+</div>
+</footer>
+
+        </div>
+    </div>
+    
+    <!-- Rendered if sidebar right is enabled -->
+    <!-- Sidebar right skeleton-->
+    <div v-cloak class="fixed top-0 bottom-0 right-0 transform translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:flex-shrink-0 lg:pt-6 lg:transform-none lg:w-56 lg:z-0 md:w-72 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+        <div class="pl-5">
+            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+        </div>
+    </div>
+    
+    <!-- User should be able to hide sidebar right -->
+    <doc-sidebar-right v-cloak></doc-sidebar-right>
+</div>
+
+        </div>
+    </div>
+
+    <doc-search-mobile></doc-search-mobile>
+    <doc-back-to-top></doc-back-to-top>
+</div>
+
+
+        <div id="docs-overlay-target"></div>
+
+        <script>window.__DOCS__ = { "title": "Java Keytool 사용법", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+    </body>
+</html>
