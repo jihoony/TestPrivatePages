@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-
 jobs:
   publish:
     name: Publish to the retype branch
@@ -19,5 +18,4 @@ jobs:
         with:
           branch: retype
           update-branch: true
-url: https://jihoony.github.io/TestPrivatePages/
 
