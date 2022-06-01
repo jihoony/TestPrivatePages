@@ -7,18 +7,21 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Welcome</title>
-    <meta name="title" content="Welcome">
+    <title>Spring JPA에서 Tibero를 사용하기 위한 설정</title>
+    <meta name="title" content="Spring JPA에서 Tibero를 사용하기 위한 설정">
+    <meta name="description" content="Tibero를 JPA를 사용하기 위해서 반드시 지정해 주어야 하는 항목은 JPA Dialect 이다." />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jihoony.github.io/TestPrivatePages/">
-    <meta property="og:title" content="Welcome">
+    <meta property="og:url" content="https://jihoony.github.io/TestPrivatePages/spring/jpaconfigtibero/">
+    <meta property="og:title" content="Spring JPA에서 Tibero를 사용하기 위한 설정">
+    <meta property="og:description" content="Tibero를 JPA를 사용하기 위해서 반드시 지정해 주어야 하는 항목은 JPA Dialect 이다.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://jihoony.github.io/TestPrivatePages/">
-    <meta property="twitter:title" content="Welcome">
+    <meta property="twitter:url" content="https://jihoony.github.io/TestPrivatePages/spring/jpaconfigtibero/">
+    <meta property="twitter:title" content="Spring JPA에서 Tibero를 사용하기 위한 설정">
+    <meta property="twitter:description" content="Tibero를 JPA를 사용하기 위해서 반드시 지정해 주어야 하는 항목은 JPA Dialect 이다.">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/TestPrivatePages/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -27,6 +30,7 @@
     <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.707443135754" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/TestPrivatePages/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
     <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.707443135754" defer></script>
+    <script id="prism-js" type="text/javascript" src="/TestPrivatePages/resources/js/prism.js?v=1.11.2.707443135754" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -161,12 +165,82 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="welcome" class="break-words">
+<doc-anchor-target id="spring-jpa에서-tibero를-사용하기-위한-설정" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#welcome">#</doc-anchor-trigger>
-        <span>Welcome</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#spring-jpa에서-tibero를-사용하기-위한-설정">#</doc-anchor-trigger>
+        <span>Spring JPA에서 Tibero를 사용하기 위한 설정</span>
     </h1>
 </doc-anchor-target>
+<p>Tibero를 JPA를 사용하기 위해서 반드시 지정해 주어야 하는 항목은 JPA Dialect 이다.</p>
+<p>Tibero는 기본적으로 Oracle을 따라가기 때문에 Oracle Dialect를 상속받아 사용하면 된다.</p>
+<p>pom.xml에 spring jpa와 tibero dependency를 추가한다.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-markup"><code v-pre class="language-markup">&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;tibero6&lt;/groupId&gt;
+		&lt;artifactId&gt;tibero6-custom&lt;/artifactId&gt;
+		&lt;version&gt;6.0&lt;/version&gt;
+		&lt;scope&gt;system&lt;/scope&gt;
+		&lt;systemPath&gt;${project.basedir}/lib/tibero6-jdbc.jar&lt;/systemPath&gt;
+	&lt;/dependency&gt;
+&lt;/dependencies&gt;  </code></pre>
+</doc-codeblock></div>
+<p>Configuration에서 JPA 설정을 한다.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-java"><code v-pre class="language-java">package com.example.tiberojpa;
+
+import org.hibernate.dialect.Oracle10gDialect;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
+
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
+
+@Configuration
+public class JPAConfig {
+
+    @Autowired
+    private DataSource dataSource;
+
+    public static class TiberoDialect extends Oracle10gDialect { }
+
+    @Bean
+    public EntityManagerFactory entityManagerFactory(){
+        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        vendorAdapter.setGenerateDdl(false);
+
+        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+        factory.setJpaVendorAdapter(vendorAdapter);
+        factory.setPackagesToScan(&quot;com.example.tiberojpa&quot;);
+        factory.setDataSource(this.dataSource);
+
+        factory.getJpaPropertyMap().put(&quot;show-sql&quot;, true);
+        factory.getJpaPropertyMap().put(&quot;hibernate.dialect&quot;, TiberoDialect.class);
+        factory.getJpaPropertyMap().put(&quot;hibernate.physical_naming_strategy&quot;, &quot;org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&quot;);
+
+        factory.afterPropertiesSet();
+
+        return factory.getObject();
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager(){
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(entityManagerFactory());
+        return transactionManager;
+    }
+}
+</code></pre>
+</doc-codeblock></div>
 
 
 
@@ -178,16 +252,16 @@
             
 <nav class="flex mt-14">
     <div class="w-1/2">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/devops/container-technology-docker/">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+            <span>
+                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                <span class="block mt-1">Container Technology, Docker</span>
+            </span>
+        </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/cryptography/java-keytool/">
-            <span>
-                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">Java Keytool 사용법</span>
-            </span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
-        </a>
     </div>
 </nav>
 
@@ -232,6 +306,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Welcome", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Spring JPA에서 Tibero를 사용하기 위한 설정", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>
