@@ -22,12 +22,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/TestPrivatePages/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.2.707545610612" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.2.707545847930" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.707545610612" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.707545847930" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/TestPrivatePages/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.707545610612" defer></script>
-    <script id="prism-js" type="text/javascript" src="/TestPrivatePages/resources/js/prism.js?v=1.11.2.707545610612" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.707545847930" defer></script>
+    <script id="prism-js" type="text/javascript" src="/TestPrivatePages/resources/js/prism.js?v=1.11.2.707545847930" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -175,6 +175,7 @@
     </h2>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">Resource Reader</div>
 <pre class="language-java"><code v-pre class="language-java">import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -209,13 +210,14 @@ public class ResourceReaderFile {
     </h2>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">Resource Writer</div>
 <pre class="language-java"><code v-pre class="language-java">import java.io.*;
 
-public class ResourceWriterFileImpl {
+public class ResourceWriterFile {
 
     private BufferedWriter bufferedWriter;
 
-    public ResourceWriterFileImpl(String fileName){
+    public ResourceWriterFile(String fileName){
         String filePath = fileName;
 
         File file = new File(filePath);
