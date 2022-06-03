@@ -4,8 +4,7 @@ url: https://jihoony.github.io/TestPrivatePages/
 branding:
   title: My Developer Notes
   label: Docs
-#links:
-#- text: Powered by Retype, Getting Started
-#  link: https://retype.com/guides/getting-started/
+meta:
+    title: "My Developer Notes"
 footer:
   copyright: "&copy; Copyright {{ year }}. All rights reserved."
