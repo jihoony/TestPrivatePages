@@ -4,7 +4,7 @@
 
 ## Resource Reader 샘플 코드
 
-```java
+```java Resource Reader
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -37,14 +37,14 @@ public class ResourceReaderFile {
 
 ## Resource Writer 샘플 코드
 
-```java
+```java Resource Writer
 import java.io.*;
 
-public class ResourceWriterFileImpl {
+public class ResourceWriterFile {
 
     private BufferedWriter bufferedWriter;
 
-    public ResourceWriterFileImpl(String fileName){
+    public ResourceWriterFile(String fileName){
         String filePath = fileName;
 
         File file = new File(filePath);
