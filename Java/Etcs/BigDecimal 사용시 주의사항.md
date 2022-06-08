@@ -31,8 +31,8 @@ binary 형태로 저장하는 과정에서 의도한 값을 정확하게 저장 
 void bigDecimalTest(){
     double value = 48.33;
 
-    BigDecimal floatValue = new BigDecimal(value);
-    System.out.println(floatValue);
+    BigDecimal doubleValue = new BigDecimal(value);
+    System.out.println(doubleValue);
 
     BigDecimal stringValue = new BigDecimal(String.valueOf(value));
     System.out.println(stringValue);
