@@ -25,11 +25,11 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/TestPrivatePages/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.2.707977577769" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.2.707978667660" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.707977577769" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.707978667660" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/TestPrivatePages/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.707977577769" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.707978667660" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -272,7 +272,7 @@
 <p>RSA 알고리즘을 이용해 데이터를 암호화하고 전자 서명하는 방법에 대한 내용과 RSA 공개키의 구문을 설명합니다. PKCS #2와 #4는 폐기되고 주요 내용은 PKCS #1에 포함되었습니다.</p>
 </li>
 <li><p>PKCS #3 Deffie-Hellman Key Agreement Standard 키 합의 표준</p>
-<p>디피헬먼 키분배 알고리즘의 구현을 위한 방법을 설명하였습니다. PKCS #3은 OSI의 전송 및 네트워크 계층에서이 안전한 전송 채널 구축을 위한 프로토콜에 사용되는 것이 목적입니다.</p>
+<p>디피헬먼 키분배 알고리즘의 구현을 위한 방법을 설명하였습니다. PKCS #3은 OSI의 전송 및 네트워크 계층에서의 안전한 전송 채널 구축을 위한 프로토콜에 사용되는 것이 목적입니다.</p>
 </li>
 <li><p>PKCS #5 Password-based Cryptography Specification Version 2.0 (RFC 2898)</p>
 <p>개인 키정보를 사용자의 패스워드에 기반하여 암호화하는 방법을 정의한 패스워드 기반 암호표준입니다. PKCS #5는 외부에서 개인키를 생성하여 당사자에게 전송시킬 때 개인키를 암호화하는 것을 목적으로 합니다. 개인키를 특징 기기나 개인이 사용하기 위해 복호화하기 위해서는 패스워드가 필요합니다.</p>
@@ -281,7 +281,7 @@
 <p>X.509 인증서의 version 1을 확장했지만, 현재는 X.509 Version 3가 사용되므로 사용되지 않습니다.</p>
 </li>
 <li><p>PKCS #7 Cryptographi Message Syntax Version 1.5 (RFC 3369)</p>
-<p>전자 서명이나 전자 봉투와 같은 암호 응요에 대한 일반적인 구문 표협입니다. PKCS #7은 PEM과 호환됩니다.</p>
+<p>전자 서명이나 전자 봉투와 같은 암호 응용에 대한 일반적인 구문 표협입니다. PKCS #7은 PEM과 호환됩니다.</p>
 </li>
 <li><p>PKCS #8 Private-Key Information Syntax Specification Version 1.2 (RFC 5208)</p>
 <p>개인키 정보 구문 표준으로 개인키와 속성 정보를 포함한 암호화된 개인키를 위한 구문을 정의합니다.</p>
@@ -362,7 +362,7 @@
 <li>바이너리 형식으로 저장되며 PKCS#12 포맷의 파일은 인증서, 개인키 내용을 파일 하나에 모두 담고 있다.</li>
 <li>백업 또는 이동용으로 주로 사용</li>
 <li>P12 파일을 생성하기 전에 개인키(예: key.pem), 인증 기관에서 서명한 인증서(예: certificate.pem), CA 기관의 하나 이상의 인증서(중간 CA 인증서라고도 함)가 있어야 한다.</li>
-<li>P12파일은 PKCS#12 형식으로 하나 또는 그 이상의 certificate(public)과 그에 대응하는 private key를 포함하고 있는 keystore 파일이며 패스워드로 암호화 되어 있다. 열어서 내용을 확인하여면 패스워드가 필요하다.</li>
+<li>P12파일은 PKCS#12 형식으로 하나 또는 그 이상의 certificate(public)과 그에 대응하는 private key를 포함하고 있는 keystore 파일이며 패스워드로 암호화 되어 있다. 열어서 내용을 확인하려면 패스워드가 필요하다.</li>
 </ul>
 
 
