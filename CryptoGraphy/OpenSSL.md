@@ -1,5 +1,3 @@
-# OpenSSL
-
 # OpenSSL 자주 쓰는 명령어(command) 및 사용법, tip 정리
 
 ## 설치
