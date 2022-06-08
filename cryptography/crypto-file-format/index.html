@@ -25,11 +25,11 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/TestPrivatePages/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.2.707979217584" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.2.707980527368" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.707979217584" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.707980527368" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/TestPrivatePages/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.707979217584" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.707980527368" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -178,7 +178,7 @@
     </h2>
 </doc-anchor-target>
 <p>PEM (Privacy Enhanced Mail)은 Base64 로 인코딩한 텍스트 형식의 파일입니다.</p>
-<p>Binary 형식의 파일을 전송할 때 손상될 수 있으므로 TEXT 로 변환하며 소스 파일은 모든 바이너리가 가능하지만 주로 인증서나 개인키가 됩니다.</p>
+<p>Binary 형식의 파일을 전송할 때 손상될 수 있으므로 TEXT 로 변환하며, 소스 파일은 모든 바이너리가 가능하지만 주로 인증서나 개인키가 됩니다.</p>
 <p>AWS 에서 EC2 Instance 를 만들때 접속용으로 생성하는 개인키도 PEM 형식입니다.</p>
 <p>어떤 바이너리 파일을 PEM 으로 변환했는지 구분하기 위해 파일의 맨 앞에 dash(-) 를 5 개 넣고 BEGIN 파일 유형을 넣고 다시 dash(-) 를 5개 뒤에 END 파일유형 구문을 사용합니다.</p>
 <doc-anchor-target id="openssh-private-key">
@@ -295,11 +295,11 @@ b3dhaGFuMQ8wDQYDVQQDDAZhZGJldGEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJ
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/cryptography/openssl/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/cryptography/openssl-root-ca-생성-및-ssl-인증서-발급/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">OpenSSL 자주 쓰는 명령어(command) 및 사용법, tip 정리</span>
+                <span class="block mt-1">OpenSSL로 ROOT CA 생성 및 SSL 인증서 발급</span>
             </span>
         </a>
     </div>
