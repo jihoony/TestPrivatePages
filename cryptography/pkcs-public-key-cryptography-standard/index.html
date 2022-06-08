@@ -25,11 +25,11 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/TestPrivatePages/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.2.707976530567" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.2.707976735967" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.707976530567" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.707976735967" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/TestPrivatePages/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.707976530567" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.707976735967" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -171,17 +171,17 @@
     </h1>
 </doc-anchor-target>
 <doc-anchor-target id="pkcs-intro">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#pkcs-intro">#</doc-anchor-trigger>
         <span>PKCS Intro</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p>PKCS는 공개키 기반 구조(PKI, Public Key Infrastructure)에서 인터넷을 이용해 안전하게 정보를 교환하기 위한 제조사간 비공식 표준 프로토콜로 미국의 RSA가 개발한 암호 작성 시스템입니다. PKCS는 애플, 마이크로소프트, DEC 등의 회사에서 공동 개발하였지만, IETF에서 RFC로 받아드리면서 공식적인 표준으로 인정하고 있습니다.</p>
 <doc-anchor-target id="pkcs-세부-항목">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#pkcs-세부-항목">#</doc-anchor-trigger>
         <span>PKCS 세부 항목</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p>PKCS에서 다루고 있는 Credential은 정보 시스템에서 암호화된 개인정보로 개인의 공개키 암호 알고리즘을 위한 공개키 및 개인키 쌍, 공개키 인증서, CA 관련 정보, 패스워드 등을 포함하는 암호 정보의 총합입니다. 이를 다루는 PKCS는 #1에서 #15까지 있으며 아래 표와 같은 내용을 담고 있습니다.</p>
 <div class="table-wrapper scrollbar overflow-hidden">
@@ -309,10 +309,10 @@
 </li>
 </ul>
 <doc-anchor-target id="pkcs-표준-분류">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#pkcs-표준-분류">#</doc-anchor-trigger>
         <span>PKCS 표준 분류</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
@@ -339,10 +339,10 @@
 </table>
 </div>
 <doc-anchor-target id="pkcs-5-10-인증서-발행-방식의-차이">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#pkcs-5-10-인증서-발행-방식의-차이">#</doc-anchor-trigger>
         <span>PKCS #5, #10 (인증서 발행 방식의 차이)</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <p>우리가 일반적으로 사용하는 것을 PKCS #5와 PKCS #10 입니다.</p>
 <p>이 두가지는 개인키와 공개키를 생성하는 방식에서 차이가 있습니다.</p>
@@ -350,10 +350,10 @@
 <p>PKCS #5는 외부 CA 서버로 부터 단말이나 사용자의 개인키와 공인키를 생성한 후에 패스워드로 안전하게 암호화하여 기기나 사용자에게 주입하는 방식입니다.</p>
 <p>따라서, PKCS #5 방식을 지원하면 보통 PKCS #10을 지원하지 않고, 그 역도 마찬가지 입니다.</p>
 <doc-anchor-target id="pkcs-12-keystore">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#pkcs-12-keystore">#</doc-anchor-trigger>
         <span>PKCS #12 (Keystore)</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <ul>
 <li>사용자의 개인정보(사용자의 개인키, 인증 등)의 저장과 교환을 위한 포맷</li>
