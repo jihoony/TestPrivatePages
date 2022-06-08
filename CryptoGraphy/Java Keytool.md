@@ -1,7 +1,7 @@
 # Java Keytool 사용법
 
 
-# 개요
+## 개요
 
 Java 는 KetStore라는 인터페이스를 통해 Encryption/Decryption 및 Digital Signature에 사용되는 Private Key, Public Key 와 Certificate를 추상화하여 제공하고 있다.
 
@@ -11,7 +11,7 @@ keytool은 Keystore 기반으로 인증서와 키를 관리할 수 있는 커맨
 
 
 
-# 용법
+## 용법
 
 옵션 없이 keytool을 실행하면 다음과 같이 메인 command를 표시한다.
 
@@ -82,7 +82,7 @@ Use "keytool -help" for all available commands
 
 
 
-# KeyStore Type
+## KeyStore Type
 
 keytool을 사용할 경우 명시적으로 *-keystore* 옵션으로 키스토어 파일의 경로를 지적하지 않으면 기본적으로 사용자의 홈디렉토리에서 .keystore 파일을 찾게 된다.
 
@@ -108,9 +108,9 @@ Windows와 Mac OSX는 OS에 개인키와 인증서를 저장하는 공간이 따
 
 
 
-# KeyPair 내 Object 출력
+## KeyPair 내 Object 출력
 
-## 인증서 목록 출력
+### 인증서 목록 출력
 
 다음 명령으로 KeyStore 내 인증서 목록을 출력할 수 있다.
 
@@ -128,7 +128,7 @@ $ keytool -list -keystore $JAVA_HOME/jre/lib/security/cacerts
 
 
 
-# 인증서 Import
+## 인증서 Import
 
 *-importcert* 명령어로 인증서를 임포트 할 수 있다. 만약 인증기관 인증서라면 *-trustcacerts* 옵션을 추가한다.
 
@@ -138,9 +138,9 @@ $ keytool -importcert -keystore my-keystore.jks -storepass changeit -trustcacert
 
 
 
-# Private Key import
+## Private Key import
 
-keytool은 외부에서 생성된 private key 를 keystore 에 import 하는 방법을 제공하지 않는다. 한 가지 방법은 JKD 6 이상부터 PKCS#12으로 된 인증서와 개인키를 keystore 에 import 하는게 가능하므로 openssl로 pkcs#12를 만들고 pics#12를 KeyStore로 임포트하면 된다.
+keytool은 외부에서 생성된 private key 를 keystore 에 import 하는 방법을 제공하지 않는다. 한 가지 방법은 JDK 6 이상부터 PKCS#12으로 된 인증서와 개인키를 keystore 에 import 하는게 가능하므로 openssl로 pkcs#12를 만들고 pkcs#12를 KeyStore로 임포트하면 된다.
 
 
 
@@ -148,18 +148,18 @@ keytool은 외부에서 생성된 private key 를 keystore 에 import 하는 방
 
 2. 인증서와 개인키가 DER 방식으로 encoding 되어있으면 openssl에서 pkcs12로 변환하지 못하니 PEM 형식으로 변환해야 한다. 에디터로 열어서 다음과 같이 텍스트로 표시되면 PEM 이고 바이너리면 DER 이므로 변환해야 한다.
 
-   < 인증서 예시 >
+   **인증서 예시**
 
-   ```pem
+   ```pem 인증서 예시
    -----BEGIN CERTIFICATE-----
    MIIFeDCCBGCgAwIBAgIBGTANBgkqhkiG9w0BAQsFADBpMQswCQYDVQQGEwJLUjEN
    MAsGA1UECgwES0lTQTEuMCwGA1UECwwlS29yZWEgQ2VydGlmaWNhdGlvbiBBdXRo
    b3JpdHkgQ2VudHJhbDEbMBkGA1UEAwwSS2lzYSBUZXN0IFJvb3RDQSA1MB4XDTEx
    ```
 
-   < 개인키 예시 >
+   **개인키 예시**
 
-   ```PEM
+   ```PEM 개인키 예시
    -----BEGIN RSA PRIVATE KEY-----
    MIIEpAIBAAKCAQEA6KLO6jGTx1NMZsN3QJh/YCrVgmZsHlaD8sSFIFUcc5wH0gy6
    oKggrOD7gE9CPRb3MQG53hx29c92ih/cFKrN1IoeSPj0ftxZPhKUczfot2CAH3GX
@@ -197,7 +197,7 @@ keytool은 외부에서 생성된 private key 를 keystore 에 import 하는 방
 
 
 
-# alias 변경
+## alias 변경
 
 ```bash
 $ keytool -changealias -keystore MY_KEYSTORE_2.jks -alias OLD_ALIAS -destalias NEW_ALIAS
@@ -205,13 +205,13 @@ $ keytool -changealias -keystore MY_KEYSTORE_2.jks -alias OLD_ALIAS -destalias N
 
 
 
-# 암호 변경
+## 암호 변경
 
 Key Store에 저장된 개인키를 보호하기 위해 key store 자체에 대해서 암호를 걸 수 있고 특정 alias에 저장된 개인키에도 암호를 걸 수 있다.
 
-## Keystore 암호 변경
+### Keystore 암호 변경
 
-Jus_keystore 라는 키스토어 파일의 암호를 변경한다.
+jks_keystore 라는 키스토어 파일의 암호를 변경한다.
 
 ```bash
 $ keytool -storepasswd -keystore jks_keystore
@@ -223,7 +223,7 @@ Re-enter new keystore password:
 
 
 
-## Key 암호 변경
+### Key 암호 변경
 
 jks_keystore 라는 키스토어 파일내의 mykey 라는 alias 를 가진 개인키의 암호를 변경한다.
 
@@ -238,9 +238,9 @@ Re-enter new key password for <mykey>:
 
 
 
-# Ref
+## Ref
 
-## KeyStore Entries
+### KeyStore Entries
 
 | Type        | Description                                                  |
 | ----------- | ------------------------------------------------------------ |
@@ -250,13 +250,13 @@ Re-enter new key password for <mykey>:
 
 
 
-## KeyStore Type
+### KeyStore Type
 
 | Type       | Description                                                  |
 | ---------- | ------------------------------------------------------------ |
 | JKS        | Java Key Store. You can find this file at sun.security.provider.JavaKeyStore. This keystore is Java specific, it usually has an extension of jks. This type of keystore can contain private keys and certificates, but it cannot be used to store secret keys. Sing it's a Java specific keystore, so it cannot be used in other programming languages. The private keys stored in JKS cannot be extracted in Java. |
 | JCEKS      | JCE key store(Java Cryptography Extension KeyStore). It is a super set of JKS with more algorithms supported. It is an enhanced standard added later by Sun. You can find this file at com.sun.crypto.provider.JceKeyStore. This keystore has an extension of jceks. The entries which can be put in the JCEKS keystore are private keys, secret keys and certificates. This keystore provides much stronger protection for stored private keys by using Triple DES encryption.<br />The provider of JCEKS is SunJCE, it was introduced in Java 1.4. Hence prior to Java 1.4, only JKS can be used. |
-| PCKS12     | this is a standard keystore type which can be used in Java and other languages. You can find this keystore implementation at sun.security.pkcs12.PKCS12KeyStore. It usually has an extension of p12 or pfx. You can store private keys, secret keys and certificates on this type. Unlike JKS, the private keys on PKCS12 keystore can be extracted in Java. This type is portable and can be operated with other libraries written in other languages such as C, C++ or C#.<br />Currently the default keystore type in Java is JKS, i.e the keystore format will be JKS if you don't specify the -storetype while creating keystore with keytool. However, [the default keystore type will be changed to PKCS12 in Java 9](http://openjdk.java.net/jeps/229) because its enhanced compatibility compared to JKS. You can check the default keystore type at **$JRE/lib/security/java.security** file: |
+| PKCS12     | this is a standard keystore type which can be used in Java and other languages. You can find this keystore implementation at sun.security.pkcs12.PKCS12KeyStore. It usually has an extension of p12 or pfx. You can store private keys, secret keys and certificates on this type. Unlike JKS, the private keys on PKCS12 keystore can be extracted in Java. This type is portable and can be operated with other libraries written in other languages such as C, C++ or C#.<br />Currently the default keystore type in Java is JKS, i.e the keystore format will be JKS if you don't specify the -storetype while creating keystore with keytool. However, [the default keystore type will be changed to PKCS12 in Java 9](http://openjdk.java.net/jeps/229) because its enhanced compatibility compared to JKS. You can check the default keystore type at **$JRE/lib/security/java.security** file: |
 | PKCS11     | this is a hardware keystore type. It provides an interface for the Java library to connect with hardware keystore devices such as SafeNet's Luna, nCipher or Smart cards. You can find this implementation at sun.security.pkcs11.P11KeyStore. When you load the keystore, you no need to create a specific provider with specific configuration. This keystore can store private keys, secret keys and certificates. When loading the keystore, the entries will be retrieved from the keystore and then converted into software entries. |
 | DKS        | Domain KeyStore is a keystore of keystore. It abstracts a collection of keystores that are presented as a single logical keystore. Itself is actually not a keystore. This new keystore type is introduced in [Java 8](http://docs.oracle.com/javase/8/docs/technotes/guides/security/enhancements-8.html). There is a new class [DomainLoadStoreParameter](http://docs.oracle.com/javase/8/docs/api/java/security/DomainLoadStoreParameter.html) which closely relates to DKS.<br />This keystore is located at **sun.security.provider.DomainKeyStore.java**. |
 | Windows-MY | this is a type of keystore on Windows which is managed by the Windows operating system. It stores the user private keys and certificates which can be used to perform cryptographic operations such as signature verification, data encryption etc. Since it's a kind of native keystore, Java doesn't have a general API to access it. Oracle provides a separate API to access the Windows-MY keystore -- SunMSCAPI. The provider class for this API is **sun.security.mscapi.SunMSCAPI**. |
@@ -264,7 +264,7 @@ Re-enter new key password for <mykey>:
 
 
 
-## Links
+### Links
 
 - https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyStore
 - https://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html
