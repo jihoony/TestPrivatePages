@@ -25,12 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/TestPrivatePages/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.2.707973290296" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.2.707976530567" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.707973290296" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.707976530567" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/TestPrivatePages/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.707973290296" defer></script>
-    <script id="prism-js" type="text/javascript" src="/TestPrivatePages/resources/js/prism.js?v=1.11.2.707973290296" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.707976530567" defer></script>
+    <script id="prism-js" type="text/javascript" src="/TestPrivatePages/resources/js/prism.js?v=1.11.2.707976530567" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -172,19 +172,19 @@
     </h1>
 </doc-anchor-target>
 <doc-anchor-target id="개요">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#개요">#</doc-anchor-trigger>
         <span>개요</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p>Java 는 KetStore라는 인터페이스를 통해 Encryption/Decryption 및 Digital Signature에 사용되는 Private Key, Public Key 와 Certificate를 추상화하여 제공하고 있다.</p>
 <p>KeyStore를 구현한 Provider에 따라 실제 개인키가 저장되는 곳이 로컬 디스크이든 HSM 같은 별도의 하드웨어이든 아니면 Windows의 CertStore나 OSX의 KeyChain 이든 상관없이 사용자는 소스 코드 수정없이 키와 인증서를 가져올 수 있고 이를 이용하여 데이타 암복호화, 전자서명을 수행할 수 있다.</p>
 <p>keytool은 Keystore 기반으로 인증서와 키를 관리할 수 있는 커맨드 방식의 유틸리티로 JDK에 포함되어 있다. 커맨드 방식의 openssl과 비슷한 용도로 사용할 수 있는 프로그램이라 보면 될 것 같다.</p>
 <doc-anchor-target id="용법">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#용법">#</doc-anchor-trigger>
         <span>용법</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p>옵션 없이 keytool을 실행하면 다음과 같이 메인 command를 표시한다.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -245,10 +245,10 @@ Options:
 Use &quot;keytool -help&quot; for all available commands</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="keystore-type">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#keystore-type">#</doc-anchor-trigger>
         <span>KeyStore Type</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p>keytool을 사용할 경우 명시적으로 <em>-keystore</em> 옵션으로 키스토어 파일의 경로를 지적하지 않으면 기본적으로 사용자의 홈디렉토리에서 .keystore 파일을 찾게 된다.</p>
 <p>keystore는 여러 가지 타입을 지원하는데 기본적으로는 JKS(Java KeyStore) 라는 타입으로 처리된다.</p>
@@ -262,16 +262,16 @@ Use &quot;keytool -help&quot; for all available commands</code></pre>
 </doc-codeblock></div>
 <p>Windows와 Mac OSX는 OS에 개인키와 인증서를 저장하는 공간이 따로 있는데 keytool로 접근이 가능하다. <strong>Windows-MY</strong>는 사용자의 인증서와 개인키를 저장하는 공간이며 <strong>Windows-ROOT</strong>는 신뢰하는 루트 인증서를 저장하는 공간이다. OSX의 키체인(KeyChain) 에 접근시 <strong>KeychainStore</strong>를 타입으로 지정하면 된다. 그외 <strong>Bouncy Castle</strong>를 <strong>JCE Provider</strong>로 사용할 경우 <strong>BKS</strong> 타입을 사용할 수 있다.</p>
 <doc-anchor-target id="keypair-내-object-출력">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#keypair-내-object-출력">#</doc-anchor-trigger>
         <span>KeyPair 내 Object 출력</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <doc-anchor-target id="인증서-목록-출력">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#인증서-목록-출력">#</doc-anchor-trigger>
         <span>인증서 목록 출력</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <p>다음 명령으로 KeyStore 내 인증서 목록을 출력할 수 있다.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -282,37 +282,37 @@ Use &quot;keytool -help&quot; for all available commands</code></pre>
 <pre class="language-bash"><code v-pre class="language-bash">$ keytool -list -keystore $JAVA_HOME/jre/lib/security/cacerts</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="인증서-import">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#인증서-import">#</doc-anchor-trigger>
         <span>인증서 Import</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p><em>-importcert</em> 명령어로 인증서를 임포트 할 수 있다. 만약 인증기관 인증서라면 <em>-trustcacerts</em> 옵션을 추가한다.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">$ keytool -importcert -keystore my-keystore.jks -storepass changeit -trustcacerts -alias rootca -file &quot;rootca.der&quot;</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="private-key-import">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#private-key-import">#</doc-anchor-trigger>
         <span>Private Key import</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
-<p>keytool은 외부에서 생성된 private key 를 keystore 에 import 하는 방법을 제공하지 않는다. 한 가지 방법은 JKD 6 이상부터 PKCS#12으로 된 인증서와 개인키를 keystore 에 import 하는게 가능하므로 openssl로 pkcs#12를 만들고 pics#12를 KeyStore로 임포트하면 된다.</p>
+<p>keytool은 외부에서 생성된 private key 를 keystore 에 import 하는 방법을 제공하지 않는다. 한 가지 방법은 JDK 6 이상부터 PKCS#12으로 된 인증서와 개인키를 keystore 에 import 하는게 가능하므로 openssl로 pkcs#12를 만들고 pkcs#12를 KeyStore로 임포트하면 된다.</p>
 <ol>
 <li><p>이미 외부에서 개인키(mycert.key)와 인증서(mycert.crt)는 생성 되었다고 가정한다.</p>
 </li>
 <li><p>인증서와 개인키가 DER 방식으로 encoding 되어있으면 openssl에서 pkcs12로 변환하지 못하니 PEM 형식으로 변환해야 한다. 에디터로 열어서 다음과 같이 텍스트로 표시되면 PEM 이고 바이너리면 DER 이므로 변환해야 한다.</p>
-<p>&lt; 인증서 예시 &gt;</p>
+<p><strong>인증서 예시</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<div class="codeblock-title">pem</div>
+<div class="codeblock-title">pem 인증서 예시</div>
 <pre class="language-none"><code v-pre class="language-none">-----BEGIN CERTIFICATE-----
 MIIFeDCCBGCgAwIBAgIBGTANBgkqhkiG9w0BAQsFADBpMQswCQYDVQQGEwJLUjEN
 MAsGA1UECgwES0lTQTEuMCwGA1UECwwlS29yZWEgQ2VydGlmaWNhdGlvbiBBdXRo
 b3JpdHkgQ2VudHJhbDEbMBkGA1UEAwwSS2lzYSBUZXN0IFJvb3RDQSA1MB4XDTEx</code></pre>
 </doc-codeblock></div>
-<p>&lt; 개인키 예시 &gt;</p>
+<p><strong>개인키 예시</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<div class="codeblock-title">PEM</div>
+<div class="codeblock-title">PEM 개인키 예시</div>
 <pre class="language-none"><code v-pre class="language-none">-----BEGIN RSA PRIVATE KEY-----
 MIIEpAIBAAKCAQEA6KLO6jGTx1NMZsN3QJh/YCrVgmZsHlaD8sSFIFUcc5wH0gy6
 oKggrOD7gE9CPRb3MQG53hx29c92ih/cFKrN1IoeSPj0ftxZPhKUczfot2CAH3GX
@@ -341,28 +341,28 @@ $ openssl rsa -inform der -in mycert.key.der -out mycert.key</code></pre>
 </li>
 </ol>
 <doc-anchor-target id="alias-변경">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#alias-변경">#</doc-anchor-trigger>
         <span>alias 변경</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">$ keytool -changealias -keystore MY_KEYSTORE_2.jks -alias OLD_ALIAS -destalias NEW_ALIAS</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="암호-변경">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#암호-변경">#</doc-anchor-trigger>
         <span>암호 변경</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p>Key Store에 저장된 개인키를 보호하기 위해 key store 자체에 대해서 암호를 걸 수 있고 특정 alias에 저장된 개인키에도 암호를 걸 수 있다.</p>
 <doc-anchor-target id="keystore-암호-변경">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#keystore-암호-변경">#</doc-anchor-trigger>
         <span>Keystore 암호 변경</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
-<p>Jus_keystore 라는 키스토어 파일의 암호를 변경한다.</p>
+<p>jks_keystore 라는 키스토어 파일의 암호를 변경한다.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">$ keytool -storepasswd -keystore jks_keystore
 
@@ -371,10 +371,10 @@ New keystore password:
 Re-enter new keystore password:</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="key-암호-변경">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#key-암호-변경">#</doc-anchor-trigger>
         <span>Key 암호 변경</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <p>jks_keystore 라는 키스토어 파일내의 mykey 라는 alias 를 가진 개인키의 암호를 변경한다.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -386,16 +386,16 @@ New key password for &lt;mykey&gt;:
 Re-enter new key password for &lt;mykey&gt;:</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="ref">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#ref">#</doc-anchor-trigger>
         <span>Ref</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <doc-anchor-target id="keystore-entries">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#keystore-entries">#</doc-anchor-trigger>
         <span>KeyStore Entries</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
@@ -422,10 +422,10 @@ Re-enter new key password for &lt;mykey&gt;:</code></pre>
 </table>
 </div>
 <doc-anchor-target id="keystore-type-1">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#keystore-type-1">#</doc-anchor-trigger>
         <span>KeyStore Type</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
@@ -445,7 +445,7 @@ Re-enter new key password for &lt;mykey&gt;:</code></pre>
 <td>JCE key store(Java Cryptography Extension KeyStore). It is a super set of JKS with more algorithms supported. It is an enhanced standard added later by Sun. You can find this file at com.sun.crypto.provider.JceKeyStore. This keystore has an extension of jceks. The entries which can be put in the JCEKS keystore are private keys, secret keys and certificates. This keystore provides much stronger protection for stored private keys by using Triple DES encryption.<br />The provider of JCEKS is SunJCE, it was introduced in Java 1.4. Hence prior to Java 1.4, only JKS can be used.</td>
 </tr>
 <tr>
-<td>PCKS12</td>
+<td>PKCS12</td>
 <td>this is a standard keystore type which can be used in Java and other languages. You can find this keystore implementation at sun.security.pkcs12.PKCS12KeyStore. It usually has an extension of p12 or pfx. You can store private keys, secret keys and certificates on this type. Unlike JKS, the private keys on PKCS12 keystore can be extracted in Java. This type is portable and can be operated with other libraries written in other languages such as C, C++ or C#.<br />Currently the default keystore type in Java is JKS, i.e the keystore format will be JKS if you don&#x27;t specify the -storetype while creating keystore with keytool. However, <a href="http://openjdk.java.net/jeps/229">the default keystore type will be changed to PKCS12 in Java 9</a> because its enhanced compatibility compared to JKS. You can check the default keystore type at <strong>$JRE/lib/security/java.security</strong> file:</td>
 </tr>
 <tr>
@@ -468,10 +468,10 @@ Re-enter new key password for &lt;mykey&gt;:</code></pre>
 </table>
 </div>
 <doc-anchor-target id="links">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#links">#</doc-anchor-trigger>
         <span>Links</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <ul>
 <li><a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyStore">https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyStore</a></li>
