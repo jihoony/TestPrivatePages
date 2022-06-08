@@ -9,28 +9,28 @@
     <!-- Primary Meta Tags -->
     <title>Java Keytool 사용법My Developer Notes</title>
     <meta name="title" content="Java Keytool 사용법My Developer Notes">
-    <meta name="description" content="Java 는 KetStore라는 인터페이스를 통해 Encryption/Decryption 및 Digital Signature에 사용되는 Private Key, Public Key 와 Certificate를 추상화하여 제공하고 있다." />
+    <meta name="description" content="Java 는 KeyStore라는 인터페이스를 통해 Encryption/Decryption 및 Digital Signature에 사용되는 Private Key, Public Key 와 Certificate를 추상화하여 제공하고 있다." />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jihoony.github.io/TestPrivatePages/cryptography/java-keytool/">
     <meta property="og:title" content="Java Keytool 사용법My Developer Notes">
-    <meta property="og:description" content="Java 는 KetStore라는 인터페이스를 통해 Encryption/Decryption 및 Digital Signature에 사용되는 Private Key, Public Key 와 Certificate를 추상화하여 제공하고 있다.">
+    <meta property="og:description" content="Java 는 KeyStore라는 인터페이스를 통해 Encryption/Decryption 및 Digital Signature에 사용되는 Private Key, Public Key 와 Certificate를 추상화하여 제공하고 있다.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://jihoony.github.io/TestPrivatePages/cryptography/java-keytool/">
     <meta property="twitter:title" content="Java Keytool 사용법My Developer Notes">
-    <meta property="twitter:description" content="Java 는 KetStore라는 인터페이스를 통해 Encryption/Decryption 및 Digital Signature에 사용되는 Private Key, Public Key 와 Certificate를 추상화하여 제공하고 있다.">
+    <meta property="twitter:description" content="Java 는 KeyStore라는 인터페이스를 통해 Encryption/Decryption 및 Digital Signature에 사용되는 Private Key, Public Key 와 Certificate를 추상화하여 제공하고 있다.">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/TestPrivatePages/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.2.707976863919" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.2.707977577769" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.707976863919" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.707977577769" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/TestPrivatePages/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.707976863919" defer></script>
-    <script id="prism-js" type="text/javascript" src="/TestPrivatePages/resources/js/prism.js?v=1.11.2.707976863919" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.707977577769" defer></script>
+    <script id="prism-js" type="text/javascript" src="/TestPrivatePages/resources/js/prism.js?v=1.11.2.707977577769" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -177,7 +177,7 @@
         <span>개요</span>
     </h2>
 </doc-anchor-target>
-<p>Java 는 KetStore라는 인터페이스를 통해 Encryption/Decryption 및 Digital Signature에 사용되는 Private Key, Public Key 와 Certificate를 추상화하여 제공하고 있다.</p>
+<p>Java 는 KeyStore라는 인터페이스를 통해 Encryption/Decryption 및 Digital Signature에 사용되는 Private Key, Public Key 와 Certificate를 추상화하여 제공하고 있다.</p>
 <p>KeyStore를 구현한 Provider에 따라 실제 개인키가 저장되는 곳이 로컬 디스크이든 HSM 같은 별도의 하드웨어이든 아니면 Windows의 CertStore나 OSX의 KeyChain 이든 상관없이 사용자는 소스 코드 수정없이 키와 인증서를 가져올 수 있고 이를 이용하여 데이타 암복호화, 전자서명을 수행할 수 있다.</p>
 <p>keytool은 Keystore 기반으로 인증서와 키를 관리할 수 있는 커맨드 방식의 유틸리티로 JDK에 포함되어 있다. 커맨드 방식의 openssl과 비슷한 용도로 사용할 수 있는 프로그램이라 보면 될 것 같다.</p>
 <doc-anchor-target id="용법">
