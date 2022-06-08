@@ -3,7 +3,7 @@
 
 ## 개요
 
-Java 는 KetStore라는 인터페이스를 통해 Encryption/Decryption 및 Digital Signature에 사용되는 Private Key, Public Key 와 Certificate를 추상화하여 제공하고 있다.
+Java 는 KeyStore라는 인터페이스를 통해 Encryption/Decryption 및 Digital Signature에 사용되는 Private Key, Public Key 와 Certificate를 추상화하여 제공하고 있다.
 
 KeyStore를 구현한 Provider에 따라 실제 개인키가 저장되는 곳이 로컬 디스크이든 HSM 같은 별도의 하드웨어이든 아니면 Windows의 CertStore나 OSX의 KeyChain 이든 상관없이 사용자는 소스 코드 수정없이 키와 인증서를 가져올 수 있고 이를 이용하여 데이타 암복호화, 전자서명을 수행할 수 있다.
 
