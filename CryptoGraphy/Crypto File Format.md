@@ -2,7 +2,7 @@
 
 PKI 나 전자서명 업무를 위해서 공인/공동 인증서(Digital Certificate)와 개인키(Private key)를 다뤄 보신 분은 PEM 이나 DER, CER 이란 단어와 이런 확장자를 갖는 파일을 보았을 겁니다.
 
-각 단어와 확장자에 대한 명확한 설명이 없어서 많은 분들이 혼란스러워해서 정리해 봅니다.
+
 
 
 
@@ -15,6 +15,8 @@ Binary 형식의 파일을 전송할 때 손상될 수 있으므로 TEXT 로 변
 AWS 에서 EC2 Instance 를 만들때 접속용으로 생성하는 개인키도 PEM 형식입니다.
 
 어떤 바이너리 파일을 PEM 으로 변환했는지 구분하기 위해 파일의 맨 앞에 dash(-) 를 5 개 넣고 BEGIN 파일 유형을 넣고 다시 dash(-) 를 5개 뒤에 END 파일유형 구문을 사용합니다.
+
+
 
 
 
@@ -34,6 +36,10 @@ GvbDlmHQieRJPhh/3dW1xPKgRPAMiiA/9awSM0sFcjyH8NQcfweu93QMBZAg/WrsQz1l7j
 
 
 
+
+
+
+
 ### 인증서
 
 PKI 인증서(Certificate)는 BEGIN CERTIFICATE 구문으로 시작합니다.
@@ -45,6 +51,10 @@ MAsGA1UECgwES0lTQTEuMCwGA1UECwwlS29yZWEgQ2VydGlmaWNhdGlvbiBBdXRo
 UNkAAk/bg9ART6RCVmE6fhMy04Qfybo=
 -----END CERTIFICATE-----
 ```
+
+
+
+
 
 
 
@@ -65,10 +75,18 @@ iEDdxK96zctIgo0q3zpowO2cx6uAxk4BIDWxvpM4A8xCFJgskpXeXpI5pnpgDiLO
 
 
 
+
+
+
+
 ## CRT
 
 인증서를 의미하는 CERT 의 약자로 보통 PEM 형식의 인증서를 의미하며 Linux 나 Unix 계열에서 .crt 확장자를 많이 사용합니다. 
 에디터로 파일을 열어서 BEGIN CERTIFICATE 구문이 있는지 확인하면 됩니다.
+
+
+
+
 
 
 
@@ -78,16 +96,24 @@ Windows 에서 인증서를 내보내기 할때 사용하는 확장자로 보통
 
 
 
+
+
+
+
 ## DER
 
-DER(Distinguished Encoding Rules)형식으로 인코딩된 바이너리 파일로 주로 인증서 확장자로 많이 사용합니다.
+DER (Distinguished Encoding Rules)형식으로 인코딩된 바이너리 파일로 주로 인증서 확장자로 많이 사용합니다.
 바이너리이므로 에디터로 열면 다 깨져보이므로 der 을 인식할 수 있는 프로그램(예: openssl 등) 으로 파싱하거나 ASN.1 파서를 이용해서 열어보면 됩니다.
+
+
+
+
 
 
 
 ## CSR
 
-CSR(Certificate Signing Request) 은 인증기관(CA)에 인증서 발급 요청을 하는 특별한 ASN.1 형식의 파일이며 그 안에는 내 공개키 정보와 사용하는 알고리즘 정보등이 들어 있습니다.
+CSR (Certificate Signing Request) 은 인증기관(CA)에 인증서 발급 요청을 하는 특별한 ASN.1 형식의 파일이며 그 안에는 내 공개키 정보와 사용하는 알고리즘 정보등이 들어 있습니다.
 
 CSR 생성시 보통 PEM 형식으로 인코딩해서 전달하며  다음과 같은 PEM 헤더가 붙어 있습니다.
 ```pem
@@ -98,6 +124,10 @@ b3dhaGFuMQ8wDQYDVQQDDAZhZGJldGEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJ
 ...
 -----END NEW CERTIFICATE REQUEST-----
 ```
+
+
+
+
 
 
 
