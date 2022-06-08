@@ -25,11 +25,11 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/TestPrivatePages/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.2.707978667660" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.2.707979217584" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.707978667660" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.707979217584" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/TestPrivatePages/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.707978667660" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.707979217584" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -171,7 +171,6 @@
     </h1>
 </doc-anchor-target>
 <p>PKI 나 전자서명 업무를 위해서 공인/공동 인증서(Digital Certificate)와 개인키(Private key)를 다뤄 보신 분은 PEM 이나 DER, CER 이란 단어와 이런 확장자를 갖는 파일을 보았을 겁니다.</p>
-<p>각 단어와 확장자에 대한 명확한 설명이 없어서 많은 분들이 혼란스러워해서 정리해 봅니다.</p>
 <doc-anchor-target id="pem">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#pem">#</doc-anchor-trigger>
@@ -254,7 +253,7 @@ iEDdxK96zctIgo0q3zpowO2cx6uAxk4BIDWxvpM4A8xCFJgskpXeXpI5pnpgDiLO
         <span>DER</span>
     </h2>
 </doc-anchor-target>
-<p>DER(Distinguished Encoding Rules)형식으로 인코딩된 바이너리 파일로 주로 인증서 확장자로 많이 사용합니다.
+<p>DER (Distinguished Encoding Rules)형식으로 인코딩된 바이너리 파일로 주로 인증서 확장자로 많이 사용합니다.
 바이너리이므로 에디터로 열면 다 깨져보이므로 der 을 인식할 수 있는 프로그램(예: openssl 등) 으로 파싱하거나 ASN.1 파서를 이용해서 열어보면 됩니다.</p>
 <doc-anchor-target id="csr">
     <h2>
@@ -262,7 +261,7 @@ iEDdxK96zctIgo0q3zpowO2cx6uAxk4BIDWxvpM4A8xCFJgskpXeXpI5pnpgDiLO
         <span>CSR</span>
     </h2>
 </doc-anchor-target>
-<p>CSR(Certificate Signing Request) 은 인증기관(CA)에 인증서 발급 요청을 하는 특별한 ASN.1 형식의 파일이며 그 안에는 내 공개키 정보와 사용하는 알고리즘 정보등이 들어 있습니다.</p>
+<p>CSR (Certificate Signing Request) 은 인증기관(CA)에 인증서 발급 요청을 하는 특별한 ASN.1 형식의 파일이며 그 안에는 내 공개키 정보와 사용하는 알고리즘 정보등이 들어 있습니다.</p>
 <p>CSR 생성시 보통 PEM 형식으로 인코딩해서 전달하며  다음과 같은 PEM 헤더가 붙어 있습니다.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">pem</div>
