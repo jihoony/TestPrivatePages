@@ -2,25 +2,25 @@
 
 
 
-# Intro
+## Intro
 
-## Cloud, DevOps, Container
+### Cloud, DevOps, Container
 
-### Cloud
+#### Cloud
 
 초반 컴퓨터 시스템은 원격 데이터 센터를 통하여 이루어 졌다. 기업들은 컴퓨터 하드웨어를 구입하고 유지보수하였으며, 이를 유지 보수하는 것이 비용대비 효율적이지 않았기 때문에 제 3자가 소유하고 운영하는 원격 머신의 컴퓨팅 파워를 공유하는 비즈니스 모델이 등장 했다.
 
-### DevOps
+#### DevOps
 
 기존 소프트웨어는 개발자는 소프트웨어를 작성하고, 사용환경에서 소프트웨어를 실행하고 관리하는 운영자에게 전달했다. 소프트웨어 개발과 컴퓨터 운영은 중복되는 업무가 없었으며 각자 매우 전문적인 일이었다. 클라우드의 등장으로 분산 시스템의 복잡성 및 시스템 운영 기술은 클라우드 시스템의 설계, 아키텍처, 구현과 분리하기 쉽지 않게 되었다. 더이상 소프트웨어는 기존 인프라 시스템과 밀접한 관계를 가지기 시작하였으며 또한 상호 의존적이게 변질 되었다. 소프트웨어를 작성하는 사람은 소프트웨어가 나머지 시스템과 어떤 관계가 있는지 이해해야 하며 시스템을 운영하는 사람은 소프트웨어의 작동 방식과 실패를 이해해야 한다. DevOps는 이 두 그룹을 하나로 모으기 위한 시도에 있다.
 
-### Container
+#### Container
 
 소프트웨어를 배포하려면 소프트웨어 자체뿐만 아니라 의존성이 필요하다. 의존성은 라이브러리, 인퍼트리터, 서브 패키지, 컴파일러, 확장 등을 의미한다. 구성(설정, 세부정보, 라이선스키, 패스워드 등) 또한 필요하다. 
 
 
 
-## Container
+### Container
 
 ![We sell and rent shipping containers and trailers in the Atlanta Metro |  Container Technology, Inc](https://media.graphcms.com/resize=fit:crop,height:630,width:1200/Pg3AI4OkQw6gA8ckUQ5z)
 
@@ -30,7 +30,7 @@
 
 
 
-### Virtual Machine vs Container
+#### Virtual Machine vs Container
 
 ![가상머신과 도커](https://subicura.com/assets/article_images/2017-01-19-docker-guide-for-beginners-1/vm-vs-docker.png)
 
@@ -42,7 +42,7 @@
 
 
 
-### Container Orchestration
+#### Container Orchestration
 
 운영팀은 컨테이너로 워크로드를 크게 단순화 할 수 있다. 다양한 종류의 시스템, 아키텍처, 운영 체제를 관리하는 대신에 컨테이너 오케스트레이터만 실행하면 된다. 컨테이너 오케스트레이터는 다양한 머신을 하나의 클러스터로 결합하도록 설계된 소프트웨어의 한 종류다. 컨테이너 오케스트레이터라는 용어는 일반적으로 스케줄링, 오케스트레이션, 클러스터 관리를 담당하는 단일 서비스를 말한다.
 
@@ -52,13 +52,13 @@
 
 
 
-# Docker
+## Docker
 
 Docker는 2013년 3월 산타클라라에서 열린 Pycon Conference에서 dotCloud의 창업자인 Solomon Hykes가 [The future of Linux Containers](https://www.youtube.com/watch?v=wW9CAH9nSLs) 라는 세션을 통하여 처음 세상에 알려졌다. 이후 dotCloud에서 Docker Inc.로 회사명을 변경하였다.
 
 
 
-## Docker Architecture
+### Docker Architecture
 
 Dockers uses a client-server architecture.
 
@@ -66,7 +66,7 @@ Dockers uses a client-server architecture.
 
 
 
-## Container, Container Image
+### Container, Container Image
 
 ![Docker image](https://subicura.com/assets/article_images/2017-01-19-docker-guide-for-beginners-1/docker-image.png)
 
@@ -78,7 +78,7 @@ Dockers uses a client-server architecture.
 
 
 
-### Container and Image
+#### Container and Image
 
 Container Image와 Container는 Class와 Class Instance의 관계와 같다.
 
@@ -88,9 +88,9 @@ java 파일로 작성된 Class는 인스턴스로 생성되는 과정에 속성 
 
 
 
-### Docker Image
+#### Docker Image
 
-#### Layer 저장방식
+##### Layer 저장방식
 
 ![Docker Layer](https://subicura.com/assets/article_images/2017-01-19-docker-guide-for-beginners-1/image-layer.png)
 
@@ -104,15 +104,15 @@ Docker Image and layers: https://docs.docker.com/storage/storagedriver/
 
 
 
-#### Image 경로
+##### Image 경로
 
 ![Docker image url](https://subicura.com/assets/article_images/2017-01-19-docker-guide-for-beginners-1/image-url.png)
 
 
 
-## Docker How to
+### Docker How to
 
-### Docker Container 만들기
+#### Docker Container 만들기
 
 Docker Container를 만들기 위한 명령어 구문을 통하여 Docker Container를 만들수 있다. 아래는 주요 구문을 정리하였다. Dockerfile은 Top-Down 으로 해석된다.
 
@@ -177,6 +177,6 @@ $ docker build -t node_app .
 
 
 
-### Docker Run Example
+#### Docker Run Example
 
 Search Image
