@@ -8,6 +8,7 @@ flowchart LR
 autoscan --generate--> configure.ac[[configure.ac]]
 configure.ac --> autoconf
 autoconf --generate--> configure[[configure]]
+autoconf --generate--> autom4te.cache[[autom4te.cache]]
 
 aclocal --generate--> aclocal.m4[[aclocal.m4]]
 
@@ -16,7 +17,6 @@ Makefile.am[[Makefile.am]] --> automake
 automake --generate--> Makefile.in[[Makefile.in]]
 
 configure --> ./configure
-
 Makefile.in --> ./configure
 
 ./configure --run script--> Makefile[[Makefile]]
