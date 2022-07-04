@@ -7,21 +7,21 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>FIPS 140-2My Developer Notes</title>
-    <meta name="title" content="FIPS 140-2My Developer Notes">
-    <meta name="description" content="The Federal Information Processing Standards (FIPS) are standards developed by the Nation Institute of Standards and Technology's (NIST) Computer..." />
+    <title>AutotoolMy Developer Notes</title>
+    <meta name="title" content="AutotoolMy Developer Notes">
+    <meta name="description" content="flow sequence" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jihoony.github.io/TestPrivatePages/cryptography/fips/">
-    <meta property="og:title" content="FIPS 140-2My Developer Notes">
-    <meta property="og:description" content="The Federal Information Processing Standards (FIPS) are standards developed by the Nation Institute of Standards and Technology's (NIST) Computer...">
+    <meta property="og:url" content="https://jihoony.github.io/TestPrivatePages/cc/autotool-사용법/">
+    <meta property="og:title" content="AutotoolMy Developer Notes">
+    <meta property="og:description" content="flow sequence">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://jihoony.github.io/TestPrivatePages/cryptography/fips/">
-    <meta property="twitter:title" content="FIPS 140-2My Developer Notes">
-    <meta property="twitter:description" content="The Federal Information Processing Standards (FIPS) are standards developed by the Nation Institute of Standards and Technology's (NIST) Computer...">
+    <meta property="twitter:url" content="https://jihoony.github.io/TestPrivatePages/cc/autotool-사용법/">
+    <meta property="twitter:title" content="AutotoolMy Developer Notes">
+    <meta property="twitter:description" content="flow sequence">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/TestPrivatePages/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -30,6 +30,8 @@
     <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.710225283087" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/TestPrivatePages/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
     <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.710225283087" defer></script>
+    <script id="prism-js" type="text/javascript" src="/TestPrivatePages/resources/js/prism.js?v=1.11.2.710225283087" defer></script>
+    <script id="mermaid-js" type="text/javascript" src="/TestPrivatePages/resources/js/mermaid.js?v=1.11.2" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -164,63 +166,94 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="fips-140-2" class="break-words">
+<doc-anchor-target id="autotool" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#fips-140-2">#</doc-anchor-trigger>
-        <span>FIPS 140-2</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#autotool">#</doc-anchor-trigger>
+        <span>Autotool</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="what-is-fips">
+<p>flow sequence</p>
+<div class="overflow-hidden mb-6 py-4 dark:px-5 dark:bg-white rounded-md"><pre class="mermaid w-full">flowchart LR
+	
+autoscan --generate--&gt; configure.ac[[configure.ac]]
+configure.ac --&gt; autoconf
+autoconf --generate--&gt; configure[[configure]]
+
+aclocal --generate--&gt; aclocal.m4[[aclocal.m4]]
+
+aclocal.m4 --&gt; automake
+Makefile.am[[Makefile.am]] --&gt; automake
+automake --generate--&gt; Makefile.in[[Makefile.in]]
+
+configure --&gt; ./configure
+
+Makefile.in --&gt; ./configure
+
+./configure --run script--&gt; Makefile[[Makefile]]</pre></div>
+<doc-anchor-target id="autoscan">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#what-is-fips">#</doc-anchor-trigger>
-        <span>What Is FIPS?</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#autoscan">#</doc-anchor-trigger>
+        <span>autoscan</span>
     </h2>
 </doc-anchor-target>
-<p>The Federal Information Processing Standards (FIPS) are standards developed by the Nation Institute of Standards and Technology&#x27;s (NIST) Computer Security Division. These standards describe document processing, encryption systems, and other IT standards to be used within non-military government agencies. Gevernment contractors are also expected to adhere to FIPS.</p>
-<doc-anchor-target id="what-is-fips-140-2">
+<p>하위 폴더를 검색하여 <code v-pre>configure.scan</code> 파일을 생성하며 이 파일을 <code v-pre>configure.ac</code> 로 이름을 변경해서 사용한다.</p>
+<p><code v-pre>configure.ac</code> 파일을 열어 대괄호로 묶여있는 변수에 적절한 값을 채워 넣어야 한다.</p>
+<doc-anchor-target id="autoconf">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#what-is-fips-140-2">#</doc-anchor-trigger>
-        <span>What Is FIPS 140-2?</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#autoconf">#</doc-anchor-trigger>
+        <span>autoconf</span>
     </h2>
 </doc-anchor-target>
-<p><a href="https://www.nist.gov/publications/security-requirements-cryptographic-modules-includes-change-notices-1232002">FIPS 140-2</a> is the standard used by the United States government to validate the fact that cryptographic modules and solutions (hardware and software) produces by private sector sompanies meet the NIST standards and adhere to the Fedetal Information Security Management Act of  2022 (FISMA).</p>
-<p>The FIPS 140-2 encrypt standard defines four levels, which are:</p>
-<ul>
-<li><strong>Level 1</strong>: Requires that production-grade equipment and externally tested algorithms be used.</li>
-<li><strong>Level 2</strong>: Requires physical tamper-evidence and role-based authentication for hardware. Software is required to run on an Operation System (OS) approved to Common Criteria (CC) at Evaluation Assurance Level 2 (EAL2)</li>
-<li><strong>Level 3</strong>: Hardware must feature physical tamper-resistance and identity-based authentication. There must also be a physical or logical separation between the interfaces throught which cretical security parameters (CSPs) enter and leave the module. Furthermore, private keys can only enter or leave the module in an encrypted form.</li>
-<li><strong>Level 4</strong>: This is the highest level. it requires hardware to be tamper-active.This means it must erase the device&#x27;s contanets upon detecting any changes in the module&#x27;s normal operation condition.</li>
-</ul>
-<p>Most organizations need, and therefore specify, FIPS 140-2 Level 3 certification equipment to ensure robust data protection. This level offers the best balance and compromise between dffective security and operation convenience.</p>
-<doc-anchor-target id="intrusion-prevention">
+<p><code v-pre>configure</code> 스크립트를 생성한다(동시에 <code v-pre>autom4te.cache</code> 파일도 생성한다).</p>
+<p>이 과정을 위해서 <code v-pre>configure.ac</code> 파일이 필요하다.</p>
+<doc-anchor-target id="aclocal">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#intrusion-prevention">#</doc-anchor-trigger>
-        <span>Intrusion Prevention</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#aclocal">#</doc-anchor-trigger>
+        <span>aclocal</span>
     </h2>
 </doc-anchor-target>
-<p>This includes physical security mechanisms designed to detect and prevent intruders from accessing the CSPs within the cryptographic module. The mechanism must react to attempts at unauthorized access or use of the cryptographic module by automatically erasing plaintext (CSPs) within the module.</p>
-<doc-anchor-target id="identity-based-authentication">
+<p>automake를 하기 위해 필요한 <code v-pre>aclocal.m4</code>파일을 생성한다. 이 파일에는 automake에서 사용하는 Macro에 대한 내용이 있다.</p>
+<doc-anchor-target id="automake">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#identity-based-authentication">#</doc-anchor-trigger>
-        <span>Identity-Based Authentication</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#automake">#</doc-anchor-trigger>
+        <span>automake</span>
     </h2>
 </doc-anchor-target>
-<p>This is a step ahead of the role-based authentication required in Level 2. For Level 3 compliance, it&#x27;s the user&#x27;s identity that must be authenticated. A simple example is that of a network requiring specific user logins as opposed to role-based logins.</p>
-<doc-anchor-target id="physical-or-logical-separation">
+<p><code v-pre>Makefile</code>을 만드는데 필요한 <code v-pre>Makefile.in</code>파일을 생성한다.</p>
+<p>automake명령어를 수행하게 되면 <code v-pre>Makefile.am</code>파일을 참고해서 <code v-pre>Makefile.in</code> 파일을 생성한다.</p>
+<p><code v-pre>Makefile.am</code>은 프로그래머가 작성해 주어야 하는 파일이며 해당 프로젝트에 해당 하는 정보를 기술해 주는 파일이다.</p>
+<p>이 파일은 프로젝트의 모든 디렉터리마다 작성해 주어야 하며, 디렉토리에 소스코드가 없으면 &#x27;SUBDIRS&#x27;만 쓰면 된다.</p>
+<p><code v-pre>Makefile.am</code>의 예시는 다음과 같다.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-makefile"><code v-pre class="language-makefile">bin_PROGRAMS = application
+SUBDITS = core utils
+application_SOURCES = main.c util.c core.c
+
+AM_CFLAGS = -Wall -g
+application_LDADD =
+application_LDFLAGS = -lm -lpthread -ldl</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="autoreconf">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#autoreconf">#</doc-anchor-trigger>
+        <span>autoreconf</span>
+    </h3>
+</doc-anchor-target>
+<p>automake 과정에서 <code v-pre>config.h.in</code> 파일이 없다고 오류가 나면 autoreconf 명령어를 수행한다.</p>
+<p><code v-pre>config.h.in</code> 파일이 생성된다.</p>
+<doc-anchor-target id="automake---add-missing">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#automake---add-missing">#</doc-anchor-trigger>
+        <span>automake --add-missing</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="configure">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#physical-or-logical-separation">#</doc-anchor-trigger>
-        <span>Physical or Logical Separation</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#configure">#</doc-anchor-trigger>
+        <span>./configure</span>
     </h2>
 </doc-anchor-target>
-<p>The input and output of plaintext CSPs must be performed using ports which are physically separated from other ports. Similar, in a virtual environment, the interfaces are to be logically separated.</p>
-<p>Plaintext CSPs may only be input or output from the cryptographic module in an encrypted format.</p>
-<doc-anchor-target id="opsrating-system-requirements">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#opsrating-system-requirements">#</doc-anchor-trigger>
-        <span>Opsrating System Requirements</span>
-    </h2>
-</doc-anchor-target>
-<p>FIPS 140-2 Level 3 allows fir a cryotigraoguc nidyke ti be execyted on a general-purpose PC as long as its operation system meets the minimum requirements. This must also include a CC evaluation assurance of level EAL3 or higher.</p>
+<p>autoconf로 생성한 <code v-pre>configure</code> 를 생성한다. 이 스크립트는 automake로 생성한 <code v-pre>Makefile.in</code>을 참고해서 Makefile을 만들어 준다(중간 과정에서 <code v-pre>config.status</code> 파일이 생성된다).</p>
 
 
 
@@ -232,20 +265,20 @@
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/cryptography/easy-rsa-로-인증-기관(cacertificate-authority)-구성하고-인증서-발급하기/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">easy rsa 로 인증 기관(CA;Certificate Authority) 구성하고 인증서 발급하기</span>
+                <span class="block mt-1">Welcome</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/cryptography/java-keytool/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/cryptography/easy-rsa-로-인증-기관(cacertificate-authority)-구성하고-인증서-발급하기/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">Java Keytool 사용법</span>
+                <span class="block mt-1">easy rsa 로 인증 기관(CA;Certificate Authority) 구성하고 인증서 발급하기</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -293,6 +326,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "FIPS 140-2", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Autotool", icon: "file", hasPrism: true, hasMermaid: true, hasMath: false }</script>
     </body>
 </html>
