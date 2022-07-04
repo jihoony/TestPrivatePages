@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="turbo-root" content="/TestPrivatePages">
+    <meta name="turbo-cache-control" content="no-cache">
+
+    <!-- Primary Meta Tags -->
+    <title>Intruduction to GNU AutotoolsMy Developer Notes</title>
+    <meta name="title" content="Intruduction to GNU AutotoolsMy Developer Notes">
+    <meta name="description" content="Have you ever downloaded the source code for a popular software project that required you to type the almost ritualistic" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jihoony.github.io/TestPrivatePages/cc/introduction-to-gnu-autotools/">
+    <meta property="og:title" content="Intruduction to GNU AutotoolsMy Developer Notes">
+    <meta property="og:description" content="Have you ever downloaded the source code for a popular software project that required you to type the almost ritualistic">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jihoony.github.io/TestPrivatePages/cc/introduction-to-gnu-autotools/">
+    <meta property="twitter:title" content="Intruduction to GNU AutotoolsMy Developer Notes">
+    <meta property="twitter:description" content="Have you ever downloaded the source code for a popular software project that required you to type the almost ritualistic">
+    
+    <script>(function () { var el = document.documentElement, m = localStorage.getItem("/TestPrivatePages/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="/TestPrivatePages/resources/css/retype.css?v=1.11.2.710227106915" rel="stylesheet" data-turbo-track="reload" />
+
+    <script type="text/javascript" src="/TestPrivatePages/resources/js/config.js?v=1.11.2.710227106915" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/TestPrivatePages/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
+    <script id="lunr-js" type="text/javascript" src="/TestPrivatePages/resources/js/lunr.js?v=1.11.2.710227106915" defer></script>
+</head>
+    <body>
+        <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+    <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+
+    <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+    <div class="container relative flex items-center justify-between flex-grow pr-6 md:justify-start">
+        <!-- Mobile menu button skeleton -->
+        <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center flex-shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px flex-shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+        <div v-cloak id="docs-sidebar-toggle"></div>
+
+        <!-- Logo -->
+        <div class="flex items-center justify-between h-full py-2 md:w-75">
+            <div class="flex items-center px-2 md:px-6">
+                <a id="docs-site-logo" href="/TestPrivatePages/" class="flex items-center leading-snug text-xl">
+                    <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">My Developer Notes</span>
+                </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+            </div>
+
+            <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+        </div>
+
+        <div class="flex justify-between md:flex-grow">
+            <!-- Top Nav -->
+            <nav class="hidden md:flex">
+    <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+    </ul>
+</nav>
+
+            <!-- Header Right Skeleton -->
+            <div v-cloak class="flex justify-end flex-grow skeleton">
+
+                <!-- Search input mock -->
+                <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                    <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                    </div>
+
+                    <input class="w-full h-10 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 placeholder-gray-400 dark:placeholder-dark-400"
+                    style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search" />
+                </div>
+
+                <!-- Mobile search button mock -->
+                <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                </div>
+
+                <!-- Dark mode switch placehokder -->
+                <div class="w-10 h-10 lg:ml-2"></div>
+
+                <!-- History button mock -->
+                <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                </div>
+            </div>
+
+            <div v-cloak class="flex items-center justify-end flex-grow">
+                <div id="docs-mobile-search-button"></div>
+                <doc-search-desktop></doc-search-desktop>
+
+                <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                <doc-history></doc-history>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <div class="container relative flex bg-white">
+        <!-- Sidebar Skeleton -->
+<div v-cloak class="fixed flex flex-col flex-shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+
+    <!-- Render this div, if config.showSidebarFilter is `true` -->
+    <div class="flex items-center h-16 px-6">
+        <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter" />
+    </div>
+
+    <div class="pl-6 mb-4 mt-1">
+        <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+        <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+        <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+        <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+        <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+        <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+    </div>
+
+
+    <div class="flex-shrink-0 mt-auto bg-transparent dark:border-dark-650">
+        <a
+    class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by"
+    target="_blank"
+    href="https://retype.com/"
+    rel="noopener"
+>
+    <span class="text-xs whitespace-nowrap">Powered by</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+</a>
+
+    </div>
+</div>
+
+<!-- Sidebar component -->
+<doc-sidebar v-cloak>
+    <template #sidebar-footer>
+        <div
+            class="flex-shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650"
+        >
+
+
+            <a
+    class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by"
+    target="_blank"
+    href="https://retype.com/"
+    rel="noopener"
+>
+    <span class="text-xs whitespace-nowrap">Powered by</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+</a>
+
+        </div>
+    </template>
+</doc-sidebar>
+
+
+        <div class="flex-grow min-w-0 dark:bg-dark-850">
+            <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+            <div class="flex">
+    <div class="flex-grow min-w-0 px-6 md:px-16">
+        <main class="relative pt-6 pb-16">
+            <div class="docs-markdown" id="docs-content">
+                <!-- Rendered if sidebar right is enabled -->
+                <div id="docs-sidebar-right-toggle"></div>
+               
+                <!-- Page content  -->
+<doc-anchor-target id="intruduction-to-gnu-autotools" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#intruduction-to-gnu-autotools">#</doc-anchor-trigger>
+        <span>Intruduction to GNU Autotools</span>
+    </h1>
+</doc-anchor-target>
+<p>Have you ever downloaded the source code for a popular software project that required you to type the almost ritualistic <strong>./configure; make &amp;&amp; make install</strong> command sequence to build and install it? If so, you’ve used <a href="https://www.gnu.org/software/automake/faq/autotools-faq.html">GNU Autotools</a>. If you’ve ever looked into some of the files accompanying such a project, you’ve likely also been terrified at the apparent complexity of such a build system.</p>
+<p>Good news! GNU Autotools is a lot simpler to set up than you think, and it’s GNU Autotools itself that generates those 1,000-line configuration files for you. Yes, you can write 20 or 30 lines of installation code and get the other 4,000 for free.</p>
+<doc-anchor-target id="autotools-at-work">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#autotools-at-work">#</doc-anchor-trigger>
+        <span>Autotools at work</span>
+    </h2>
+</doc-anchor-target>
+<p>If you’re a user new to Linux looking for information on how to install applications, you do not have to read this article! You’re welcome to read it if you want to research how software is built, but if you’re just installing a new application, go read my article about <a href="https://opensource.com/article/18/1/how-install-apps-linux">installing apps on Linux</a>.</p>
+<p>For developers, Autotools is a quick and easy way to manage and package source code so users can compile and install software. Autotools is also well-supported by major packaging formats, like DEB and RPM, so maintainers of software repositories can easily prepare a project built with Autotools.</p>
+<p>Autotools works in stages:</p>
+<ol>
+<li>First, during the <strong>./configure</strong> step, Autotools scans the host system (the computer it’s being run on) to discover the default settings. Default settings include where support libraries are located, and where new software should be placed on the system.</li>
+<li>Next, during the <strong>make</strong> step, Autotools builds the application, usually by converting human-readable source code into machine language.</li>
+<li>Finally, during the <strong>make install</strong> step, Autotools copies the files it built to the appropriate locations (as detected during the configure stage) on your computer.</li>
+</ol>
+<p>This process seems simple, and it is, as long as you use Autotools.</p>
+<doc-anchor-target id="the-autotools-advantage">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#the-autotools-advantage">#</doc-anchor-trigger>
+        <span>The Autotools advantage</span>
+    </h2>
+</doc-anchor-target>
+<p>GNU Autotools is a big and important piece of software that most of us take for granted. Along with <a href="https://en.wikipedia.org/wiki/GNU_Compiler_Collection">GCC (the GNU Compiler Collection)</a>, Autotools is the scaffolding that allows Free Software to be constructed and installed to a running system. If you’re running a <a href="https://en.wikipedia.org/wiki/POSIX">POSIX</a> system, it’s not an understatement to say that most of your operating system exists as runnable software on your computer because of these projects.</p>
+<p>In the likely event that your pet project isn’t an operating system, you might assume that Autotools is overkill for your needs. But, despite its reputation, Autotools has lots of little features that may benefit you, even if your project is a relatively simple application or series of scripts.</p>
+<doc-anchor-target id="portability">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#portability">#</doc-anchor-trigger>
+        <span>Portability</span>
+    </h3>
+</doc-anchor-target>
+<p>First of all, Autotools comes with portability in mind. While it can’t make your project work across all POSIX platforms (that’s up to you, as the coder), Autotools can ensure that the files you’ve marked for installation get installed to the most sensible locations on a known platform. And because of Autotools, it’s trivial for a power user to customize and override any non-optimal value, according to their own system.</p>
+<p>With Autotools, all you need to know is what files need to be installed to what general location. It takes care of everything else. No more custom install scripts that break on any untested OS.</p>
+<doc-anchor-target id="packaging">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#packaging">#</doc-anchor-trigger>
+        <span>Packaging</span>
+    </h3>
+</doc-anchor-target>
+<p>Autotools is also well-supported. Hand a project with Autotools over to a distro packager, whether they’re packaging an RPM, DEB, TGZ, or anything else, and their job is simple. Packaging tools know Autotools, so there’s likely to be no patching, hacking, or adjustments necessary. In many cases, incorporating an Autotools project into a pipeline can even be automated.</p>
+<doc-anchor-target id="how-to-use-autotools">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#how-to-use-autotools">#</doc-anchor-trigger>
+        <span>How to use Autotools</span>
+    </h2>
+</doc-anchor-target>
+<p>To use Autotools, you must first have Autotools installed. Your distribution may provide one package meant to help developers build projects, or it may provide separate packages for each component, so you may have to do some research on your platform to discover what packages you need to install.</p>
+<p>The primary components of Autotools are:</p>
+<ul>
+<li><strong>automake</strong></li>
+<li><strong>autoconf</strong></li>
+<li><strong>make</strong></li>
+</ul>
+<p>While you likely need to install the compiler (GCC, for instance) required by your project, Autotools works just fine with scripts or binary assets that don’t need to be compiled. In fact, Autotools can be useful for such projects because it provides a <strong>make uninstall</strong> script for easy removal.</p>
+<p>Once you have all of the components installed, it’s time to look at the structure of your project’s files.</p>
+<doc-anchor-target id="autotools-project-structure">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#autotools-project-structure">#</doc-anchor-trigger>
+        <span>Autotools project structure</span>
+    </h3>
+</doc-anchor-target>
+<p>GNU Autotools has very specific expectations, and most of them are probably familiar if you download and build source code often. First, the source code itself is expected to be in a subdirectory called <strong>src</strong>.</p>
+<p>Your project doesn’t have to follow all of these expectations, but if you put files in non-standard locations (from the perspective of Autotools), then you’ll have to make adjustments for that in your Makefile later.</p>
+<p>Additionally, these files are required:</p>
+<ul>
+<li><strong>NEWS</strong></li>
+<li><strong>README</strong></li>
+<li><strong>AUTHORS</strong></li>
+<li><strong>ChangeLog</strong></li>
+</ul>
+<p>You don’t have to actively use the files, and they can be symlinks to a monolithic document (like <strong>README.md</strong>) that encompasses all of that information, but they must be present.</p>
+<doc-anchor-target id="autotools-configuration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#autotools-configuration">#</doc-anchor-trigger>
+        <span>Autotools configuration</span>
+    </h3>
+</doc-anchor-target>
+<p>Create a file called <strong>configure.ac</strong> at your project’s root directory. This file is used by <strong>autoconf</strong> to create the <strong>configure</strong> shell script that users run before building. The file must contain, at the very least, the <strong>AC_INIT</strong>and <strong>AC_OUTPUT</strong> <a href="https://www.gnu.org/software/autoconf/manual/autoconf-2.67/html_node/Initializing-configure.html">M4 macros</a>. You don’t need to know anything about the M4 language to use these macros; they’re already written for you, and all of the ones relevant to Autotools are defined in the documentation.</p>
+<p>Open the file in your favorite text editor. The <strong>AC_INIT</strong> macro may consist of the package name, version, an email address for bug reports, the project URL, and optionally the name of the source TAR file.</p>
+<p>The <strong><a href="https://www.gnu.org/software/autoconf/manual/autoconf-2.67/html_node/Output.html#Output">AC_OUTPUT</a></strong> macro is much simpler and accepts no arguments.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">AC_INIT([penguin], [2019.3.6], [seth@example.com])
+AC_OUTPUT</code></pre>
+</doc-codeblock></div>
+<p>If you were to run <strong>autoconf</strong> at this point, a <strong>configure</strong> script would be generated from your <strong>configure.ac</strong>file, and it would run successfully. That’s all it would do, though, because all you have done so far is define your project’s metadata and called for a configuration script to be created.</p>
+<p>The next macros you must invoke in your <strong>configure.ac</strong> file are functions to create a <a href="https://www.gnu.org/software/make/manual/html_node/Introduction.html">Makefile</a>. A Makefile tells the <strong>make</strong> command what to do (usually, how to compile and link a program).</p>
+<p>The macros to create a Makefile are <strong>AM_INIT_AUTOMAKE</strong>, which accepts no arguments, and <strong>AC_CONFIG_FILES</strong>, which accepts the name you want to call your output file.</p>
+<p>Finally, you must add a macro to account for the compiler your project needs. The macro you use obviously depends on your project. If your project is written in C++, the appropriate macro is <strong>AC_PROG_CXX</strong>, while a project written in C requires <strong>AC_PROG_CC</strong>, and so on, as detailed in the <a href="https://www.gnu.org/software/automake/manual/html_node/Programs.html#Programs">Building Programs and Libraries</a>section in the Autoconf documentation.</p>
+<p>For example, I might add the following for my C++ program:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">AC_INIT([penguin], [2019.3.6], [seth@example.com])
+AC_OUTPUT
+AM_INIT_AUTOMAKE
+AC_CONFIG_FILES([Makefile])
+AC_PROG_CXX</code></pre>
+</doc-codeblock></div>
+<p>Save the file. It’s time to move on to the Makefile.</p>
+<doc-anchor-target id="autotools-makefile-generation">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#autotools-makefile-generation">#</doc-anchor-trigger>
+        <span>Autotools Makefile generation</span>
+    </h3>
+</doc-anchor-target>
+<p>Makefiles aren’t difficult to <a href="https://opensource.com/article/18/8/what-how-makefile">write manually</a>, but Autotools can write one for you, and the one it generates will use the configuration options detected during the <code v-pre>./configure</code> step, and it will contain far more options than you would think to include or want to write yourself. However, Autotools can’t detect everything your project requires to build, so you have to add some details in the file <strong>Makefile.am</strong>, which in turn is used by <strong>automake</strong>when constructing a Makefile.</p>
+<p><strong>Makefile.am</strong> uses the same syntax as a Makefile, so if you’ve ever written a Makefile from scratch, then this process will be familiar and simple. Often, a <strong>Makefile.am</strong> file needs only a few variable definitions to indicate what files are to be built, and where they are to be installed.</p>
+<p>Variables ending in <strong>_PROGRAMS</strong> identify code that is to be built (this is usually considered the <em>primary</em>target; it’s the main reason the Makefile exists). Automake recognizes other primaries, like <strong>_SCRIPTS</strong>, <strong>_DATA</strong>, <strong>_LIBRARIES</strong>, and other common parts that make up a software project.</p>
+<p>If your application is literally compiled during the build process, then you identify it as a binary program with the <strong>bin_PROGRAMS</strong> variable, and then reference any part of the source code required to build it (these parts may be one or more files to be compiled and linked together) using the program name as the variable prefix:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">bin_PROGRAMS = penguin
+penguin_SOURCES = penguin.cpp</code></pre>
+</doc-codeblock></div>
+<p>The target of <strong>bin_PROGRAMS</strong> is installed into the <strong>bindir</strong>, which is user-configurable during compilation.</p>
+<p>If your application isn’t actually compiled, then your project doesn’t need a <strong>bin_PROGRAMS</strong> variable at all. For instance, if your project is a script written in Bash, Perl, or a similar interpreted language, then define a <strong>_SCRIPTS</strong> variable instead:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">bin_SCRIPTS = bin/penguin</code></pre>
+</doc-codeblock></div>
+<p>Automake expects sources to be located in a directory called <strong>src</strong>, so if your project uses an alternative directory structure for its layout, you must tell Automake to accept code from outside sources:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">AUTOMAKE_OPTIONS = foreign subdir-objects</code></pre>
+</doc-codeblock></div>
+<p>Finally, you can create any custom Makefile rules in <strong>Makefile.am</strong> and they’ll be copied verbatim into the generated Makefile. For instance, if you know that a temporary value needs to be replaced in your source code before the installation proceeds, you could make a custom rule for that process:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">all-am: penguin
+        touch bin/penguin.sh
+        
+penguin: bin/penguin.sh
+        @sed &quot;s|__datadir__|@datadir@|&quot; $&lt; &gt;bin/$@</code></pre>
+</doc-codeblock></div>
+<p>A particularly useful trick is to extend the existing <strong>clean</strong> target, at least during development. The <strong>make clean</strong>command generally removes all generated build files with the exception of the Automake infrastructure. It’s designed this way because most users rarely want <strong>make clean</strong> to obliterate the files that make it easy to build their code.</p>
+<p>However, during development, you might want a method to reliably return your project to a state relatively unaffected by Autotools. In that case, you may want to add this:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">clean-local:
+        @rm config.status configure config.log
+        @rm Makefile 
+        @rm -r autom4te.cache/
+        @rm aclocal.m4 
+        @rm compile install-sh missing Makefile.in</code></pre>
+</doc-codeblock></div>
+<p>There’s a lot of flexibility here, and if you’re not already familiar with Makefiles, it can be difficult to know what your <strong>Makefile.am</strong> needs. The barest necessity is a primary target, whether that’s a binary program or a script, and an indication of where the source code is located (whether that’s through a <strong>_SOURCES</strong> variable or by using <strong>AUTOMAKE_OPTIONS</strong> to tell Automake where to look for source code).</p>
+<p>Once you have those variables and settings defined, you can try generating your build scripts as you see in the next section, and adjust for anything that’s missing.</p>
+<doc-anchor-target id="autotools-build-script-generation">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#autotools-build-script-generation">#</doc-anchor-trigger>
+        <span>Autotools build script generation</span>
+    </h3>
+</doc-anchor-target>
+<p>You’ve built the infrastructure, now it’s time to let Autotools do what it does best: automate your project tooling. The way the developer (you) interfaces with Autotools is different from how users building your code do.</p>
+<p>Builders generally use this well-known sequence:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">$ ./configure
+$ make
+$ sudo make install</code></pre>
+</doc-codeblock></div>
+<p>For that incantation to work, though, you as the developer must bootstrap the build infrastructure. First, run <strong>autoreconf</strong> to generate the configure script that users invoke before running <strong>make</strong>. Use the <strong>–install</strong> option to bring in auxiliary files, such as a symlink to <strong>depcomp</strong>, a script to generate dependencies during the compiling process, and a copy of the <strong>compile</strong> script, a wrapper for compilers to account for syntax variance, and so on.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">$ autoreconf --install
+configure.ac:3: installing './compile'
+configure.ac:2: installing './install-sh'
+configure.ac:2: installing './missing'</code></pre>
+</doc-codeblock></div>
+<p>With this development build environment, you can then create a package for source code distribution:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">$ make dist</code></pre>
+</doc-codeblock></div>
+<p>The <strong>dist</strong> target is a rule you get for &quot;free&quot; from Autotools.</p>
+<p>It’s a feature that gets built into the Makefile generated from your humble <strong>Makefile.am</strong> configuration. This target produces a <strong>tar.gz</strong> archive containing all of your source code and all of the essential Autotools infrastructure so that people downloading the package can build the project.</p>
+<p>At this point, you should review the contents of the archive carefully to ensure that it contains everything you intend to ship to your users. You should also, of course, try building from it yourself:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">$ tar --extract --file penguin-0.0.1.tar.gz
+$ cd penguin-0.0.1
+$ ./configure 
+$ make 
+$ DESTDIR=/tmp/penguin-test-build make install</code></pre>
+</doc-codeblock></div>
+<p>If your build is successful, you find a local copy of your compiled application specified by <strong>DESTDIR</strong> (in the case of this example, <strong>/tmp/penguin-test-build</strong>).</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">$ /tmp/example-test-build/usr/local/bin/example 
+hello world from GNU Autotools</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="time-to-use-autotools">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#time-to-use-autotools">#</doc-anchor-trigger>
+        <span>Time to use Autotools</span>
+    </h2>
+</doc-anchor-target>
+<p>Autotools is a great collection of scripts for a predictable and automated release process. This toolset may be new to you if you’re used to Python or Bash builders, but it’s likely worth learning for the structure and adaptability it provides to your project.</p>
+<p>And Autotools is not just for code, either. Autotools can be used to build <a href="https://opensource.com/article/17/9/docbook">Docbook</a> projects, to keep media organized (I use Autotools for my music releases), documentation projects, and anything else that could benefit from customizable install targets.</p>
+<doc-anchor-target id="reference">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#reference">#</doc-anchor-trigger>
+        <span>Reference</span>
+    </h2>
+</doc-anchor-target>
+<p><a href="https://opensource.com/article/19/7/introduction-gnu-autotools">https://opensource.com/article/19/7/introduction-gnu-autotools</a></p>
+
+
+
+
+                <!-- Required only on API pages -->
+                <doc-toolbar-member-filter-no-results />
+            </div>
+
+            
+<nav class="flex mt-14">
+    <div class="w-1/2">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/cc/autotool-사용법/">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+            <span>
+                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                <span class="block mt-1">Autotool 사용법</span>
+            </span>
+        </a>
+    </div>
+
+    <div class="w-1/2">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/cryptography/easy-rsa-로-인증-기관(cacertificate-authority)-구성하고-인증서-발급하기/">
+            <span>
+                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                <span class="block mt-1">easy rsa 로 인증 기관(CA;Certificate Authority) 구성하고 인증서 발급하기</span>
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+        </a>
+    </div>
+</nav>
+
+
+        </main>
+
+        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+            <footer class="flex flex-wrap items-center justify-between">
+    <div>
+        <ul class="flex flex-wrap items-center text-sm">
+</ul>
+
+    </div>
+    <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2022. All rights reserved.</p>
+</div>
+</footer>
+
+        </div>
+    </div>
+    
+    <!-- Rendered if sidebar right is enabled -->
+    <!-- Sidebar right skeleton-->
+    <div v-cloak class="fixed top-0 bottom-0 right-0 transform translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:flex-shrink-0 lg:pt-6 lg:transform-none lg:w-56 lg:z-0 md:w-72 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+        <div class="pl-5">
+            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+        </div>
+    </div>
+    
+    <!-- User should be able to hide sidebar right -->
+    <doc-sidebar-right v-cloak></doc-sidebar-right>
+</div>
+
+        </div>
+    </div>
+
+    <doc-search-mobile></doc-search-mobile>
+    <doc-back-to-top></doc-back-to-top>
+</div>
+
+
+        <div id="docs-overlay-target"></div>
+
+        <script>window.__DOCS__ = { "title": "Intruduction to GNU Autotools", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+    </body>
+</html>
