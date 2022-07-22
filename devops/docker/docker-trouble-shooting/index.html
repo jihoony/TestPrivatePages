@@ -7,21 +7,18 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>easy rsa 로 인증 기관(CA;Certificate Authority) 구성하고 인증서 발급하기My Developer Notes</title>
-    <meta name="title" content="easy rsa 로 인증 기관(CA;Certificate Authority) 구성하고 인증서 발급하기My Developer Notes">
-    <meta name="description" content="Easy RSA 는 OpenVPN 프로젝트에서 사용하기 위해 만든 하위 프로젝트로 인증 기관 구축(CA; Certificate Authority) 유틸리티입니다." />
+    <title>Docker Trouble ShootingMy Developer Notes</title>
+    <meta name="title" content="Docker Trouble ShootingMy Developer Notes">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jihoony.github.io/TestPrivatePages/cryptography/easy-rsa-로-인증-기관(cacertificate-authority)-구성하고-인증서-발급하기/">
-    <meta property="og:title" content="easy rsa 로 인증 기관(CA;Certificate Authority) 구성하고 인증서 발급하기My Developer Notes">
-    <meta property="og:description" content="Easy RSA 는 OpenVPN 프로젝트에서 사용하기 위해 만든 하위 프로젝트로 인증 기관 구축(CA; Certificate Authority) 유틸리티입니다.">
+    <meta property="og:url" content="https://jihoony.github.io/TestPrivatePages/devops/docker/docker-trouble-shooting/">
+    <meta property="og:title" content="Docker Trouble ShootingMy Developer Notes">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://jihoony.github.io/TestPrivatePages/cryptography/easy-rsa-로-인증-기관(cacertificate-authority)-구성하고-인증서-발급하기/">
-    <meta property="twitter:title" content="easy rsa 로 인증 기관(CA;Certificate Authority) 구성하고 인증서 발급하기My Developer Notes">
-    <meta property="twitter:description" content="Easy RSA 는 OpenVPN 프로젝트에서 사용하기 위해 만든 하위 프로젝트로 인증 기관 구축(CA; Certificate Authority) 유틸리티입니다.">
+    <meta property="twitter:url" content="https://jihoony.github.io/TestPrivatePages/devops/docker/docker-trouble-shooting/">
+    <meta property="twitter:title" content="Docker Trouble ShootingMy Developer Notes">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/TestPrivatePages/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -165,176 +162,20 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="easy-rsa-로-인증-기관cacertificate-authority-구성하고-인증서-발급하기" class="break-words">
+<doc-anchor-target id="docker-trouble-shooting" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#easy-rsa-로-인증-기관cacertificate-authority-구성하고-인증서-발급하기">#</doc-anchor-trigger>
-        <span>easy rsa 로 인증 기관(CA;Certificate Authority) 구성하고 인증서 발급하기</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#docker-trouble-shooting">#</doc-anchor-trigger>
+        <span>Docker Trouble Shooting</span>
     </h1>
 </doc-anchor-target>
-<p>Easy RSA 는 OpenVPN 프로젝트에서 사용하기 위해 만든 하위 프로젝트로 인증 기관 구축(CA; Certificate Authority) 유틸리티입니다.</p>
-<p>OpenSSL 로 CA 를 구성하려면 복잡한 여러 설정이 필요하지만 easy rsa 를 사용하면 간단하게 CA 를 구성하고 인증서를 발급할 수 있습니다.</p>
-<doc-anchor-target id="설치">
+<doc-anchor-target id="how-to-fix-e-you-dont-have-enough-free-space-in-varcacheaptarchives">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#설치">#</doc-anchor-trigger>
-        <span>설치</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#how-to-fix-e-you-dont-have-enough-free-space-in-varcacheaptarchives">#</doc-anchor-trigger>
+        <span>How to fix &quot;E: You don&#x27;t have enough free space in /var/cache/apt/archives/.&quot;</span>
     </h2>
 </doc-anchor-target>
-<p>easy rsa 는 OpenSSL 을 쉽게 사용하기 위한 script 이므로 OpenSSL 이 설치되어 있어야 합니다. 일반적인 리눅스 배포판이라면 기본적으로 openssl 이 설치되어 있지만 혹시 없는 경우 다음 명령어로 설치하면 됩니다.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sudo yum install openssl</code></pre>
-</doc-codeblock></div>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sudo apt install openssl</code></pre>
-</doc-codeblock></div>
-<p>OpenSSL 이 준비되었으면 <a href="https://github.com/OpenVPN/easy-rsa/releases">github 의 easy rsa 프로젝트에 연결</a> 한 후에 Release 를 클릭합니다.</p>
-<p>패키지 목록에서 OS 에 맞는 패키지를 다운로드 받고 압축을 풀면 되며 또는 커맨드에서 다음 명령을 실행해도 됩니다.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ wget https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.8/EasyRSA-3.0.8.tgz</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="사용">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#사용">#</doc-anchor-trigger>
-        <span>사용</span>
-    </h2>
-</doc-anchor-target>
-<doc-anchor-target id="ca-초기화">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#ca-초기화">#</doc-anchor-trigger>
-        <span>CA 초기화</span>
-    </h3>
-</doc-anchor-target>
-<p>먼저 init-pki 명령으로 PKI 초기화를 해줍니다. easy-rsa 하위에 pki 폴더가 생기고 이 안에 새로운 인증서가 생성됩니다.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$./easyrsa init-pki
-
-init-pki complete; you may now create a CA or requests.
-Your newly created PKI dir is: /home/lesstif/Downloads/EasyRSA-3.0.8/pki</code></pre>
-</doc-codeblock></div>
-<p>build-ca 명령으로 CA 를 구성합니다. 먼저 CA 개인키의 pass phrase 를 묻는데 잊어버리면 CA 를 새로 만들어야 하므로 입력해 주고 잊지 않게 기억해 둡니다.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ ./easyrsa build-ca
-
-Using SSL: openssl OpenSSL 1.1.1j  FIPS 16 Feb 2021
-
-Enter New CA Key Passphrase: 
-Re-Enter New CA Key Passphrase: 
-Generating RSA private key, 2048 bit long modulus (2 primes)</code></pre>
-</doc-codeblock></div>
-<p>pass phrase 입력이 끝나면 2048 비트의 RSA 키를 생성합니다.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">e is 65537 (0x010001)
-You are about to be asked to enter information that will be incorporated
-into your certificate request.
-What you are about to enter is what is called a Distinguished Name or a DN.
-There are quite a few fields but you can leave some blank
-For some fields there will be a default value,
-If you enter '.', the field will be left blank.
-
-Common Name (eg: your user, host, or server name) [Easy-RSA CA]:lesstif CA      </code></pre>
-</doc-codeblock></div>
-<p>이제 CA 인증서의 common name 을 설정해야 하는데 서버 이름이나 host 이름등을 입력해 주면 됩니다. 저는 &quot;lesstif CA&quot; 를 입력했습니다.</p>
-<p>입력이 끝나면 CA 개인키와 인증서가 pki 폴더밑에 생성되고 인증서 발급 준비가 완료됩니다.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">CA creation complete and you may now import and sign cert requests.
-Your new CA certificate file for publishing is at:
-/home/lesstif/Downloads/EasyRSA-3.0.8/pki/ca.crt</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="인증서-서명--요청-생성client">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#인증서-서명--요청-생성client">#</doc-anchor-trigger>
-        <span>인증서 서명  요청 생성(Client)</span>
-    </h3>
-</doc-anchor-target>
-<p>인증서가 필요한 client 에서는 인증서 서명 요청(CSR; Certificate signing request)을 생성한후에 CA 에 전달해 주면 CA 가 개인키(private key) 로 전자서명한 것이 인증서입니다.</p>
-<p>요청 측에서도 공개 키쌍 생성을 해야 하므로 init-pki 로 초기화를 해줍니다.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ ./easyrsa init-pki</code></pre>
-</doc-codeblock></div>
-<p>이제 gen-req 명령뒤에 서버 이름을 옵션으로 전달해서 CSR 을 생성합니다.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ ./easyrsa gen-req LesstifWebServer
-
-Using SSL: openssl OpenSSL 1.1.1j  FIPS 16 Feb 2021
-Generating a RSA private key
-......+++++
-...............................+++++
-writing new private key to '/home/user/EasyRSA-3.0.8/pki/easy-rsa-34188.6cwDro/tmp.Gp67YQ'
-Enter PEM pass phrase:
-Verifying - Enter PEM pass phrase:</code></pre>
-</doc-codeblock></div>
-<p>pass phrase 를 입력하면 개인 키와 공개 키가 생성되고 발급 요청자의 common name 을 입력하라고 하며 자동으로 gen-req 뒤에 준 옵션으로 설정됩니다.</p>
-<p>보통 서버 이름을 입력하며 저는 lesstifWebServer 로 설정했습니다.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">
-You are about to be asked to enter information that will be incorporated
-into your certificate request.
-What you are about to enter is what is called a Distinguished Name or a DN.
-There are quite a few fields but you can leave some blank
-For some fields there will be a default value,
-If you enter '.', the field will be left blank.
-
-Common Name (eg: your user, host, or server name) [LesstifWebServer]: LesstifWebServer</code></pre>
-</doc-codeblock></div>
-<p>키 쌍과 req가 생성되었다는 메시지가 출력되는데 req 는 CSR 로 인증기관(CA) 에 전달해 주면 CA 가 CSR 을 받아서 요청자의 공개 키를 꺼내고 여러 정보를 조합한 후에 CA의 개인키로 전자서명해 주는데 이게 바로 인증서입니다.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">Keypair and certificate request completed. Your files are:
-req: /home/user1/EasyRSA-3.0.8/pki/reqs/LesstifWebServer.req
-key: /home/user1/EasyRSA-3.0.8/pki/private/LesstifWebServer.key</code></pre>
-</doc-codeblock></div>
-<p>그러므로 생성된 req 인 /home/user1/EasyRSA-3.0.8/pki/reqs/LesstifWebServer.req 를 인증기관에 전달해 주면 됩니다</p>
-<doc-anchor-target id="인증서-발급ca">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#인증서-발급ca">#</doc-anchor-trigger>
-        <span>인증서 발급(CA)</span>
-    </h3>
-</doc-anchor-target>
-<p>CA 는 req 파일을 받아서 import-req 명령으로 인증서를 발급해 주면 됩니다. 이때 Client 가 생성한 req 파일의 절대 경로를 입력해야 합니다.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$./easyrsa import-req /home/user1/EasyRSA-3.0.8/pki/reqs/LesstifWebServer.req LesstifWebServer
-
-Using SSL: openssl OpenSSL 1.1.1j  FIPS 16 Feb 2021
-
-The request has been successfully imported with a short name of: LesstifWebServer
-You may now use this name to perform signing operations on this request.</code></pre>
-</doc-codeblock></div>
-<p>성공적으로 import 가 되었다는 메시지가 표시되면 이제 CA 개인키로 서명해서 인증서를 발급해 주면 됩니다.</p>
-<p>명령은 sign-req 이며 뒤에 옵션으로 client 와 위에서 전달받은 CSR 내 common name을 입력합니다.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ ./easyrsa sign-req client LesstifWebServer
-Using SSL: openssl OpenSSL 1.1.1j  FIPS 16 Feb 2021
-
-
-You are about to sign the following certificate.
-Please check over the details shown below for accuracy. Note that this request
-has not been cryptographically verified. Please be sure it came from a trusted
-source or that you have verified the request checksum with the sender.
-
-Request subject, to be signed as a client certificate for 825 days:
-
-subject=
-    commonName                = LesstifWebServer
-
-
-Type the word 'yes' to continue, or any other input to abort.
-  Confirm request details: </code></pre>
-</doc-codeblock></div>
-<p>commonName 확인 창이 뜨면 yes 를 입력합니다.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">Using configuration from /home/lesstif/Downloads/EasyRSA-3.0.8/pki/easy-rsa-36037.BzVS1I/tmp.egTrHW
-Enter pass phrase for /home/lesstif/Downloads/EasyRSA-3.0.8/pki/private/ca.key:</code></pre>
-</doc-codeblock></div>
-<p>CA 개인 키의 pass phrase 를 묻는 창에 제대로 입력이 되면 pki/issued 폴더에 common name 이름이 붙은 인증서가 발급됩니다. 발급된 인증서를 CSR 을 보낸 client 에 전달해 주면 됩니다.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">Check that the request matches the signature
-Signature ok
-The Subject's Distinguished Name is as follows
-commonName            :ASN.1 12:'LesstifWebServer'
-Certificate is to be certified until Jun 17 06:49:41 2023 GMT (825 days)
-
-Write out database with 1 new entries
-Data Base Updated
-
-Certificate created at: /home/lesstif/Downloads/EasyRSA-3.0.8/pki/issued/LesstifWebServer.crt</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">docker system prune</code></pre>
 </doc-codeblock></div>
 
 
@@ -347,20 +188,20 @@ Certificate created at: /home/lesstif/Downloads/EasyRSA-3.0.8/pki/issued/Lesstif
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/cc/introduction-to-gnu-autotools/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/devops/docker/container-technology-docker/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">Intruduction to GNU Autotools</span>
+                <span class="block mt-1">Container Technology, Docker</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/cryptography/fips/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/TestPrivatePages/java/maven/maven-run/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">FIPS 140-2</span>
+                <span class="block mt-1">Maven run option</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -408,6 +249,6 @@ Certificate created at: /home/lesstif/Downloads/EasyRSA-3.0.8/pki/issued/Lesstif
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "easy rsa 로 인증 기관(CA;Certificate Authority) 구성하고 인증서 발급하기", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Docker Trouble Shooting", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>
